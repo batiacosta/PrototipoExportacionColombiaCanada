@@ -74,6 +74,7 @@ public class ProductorManager : MonoBehaviour
         }
         if (counterDialog == 2)
         {
+            gameManagerScript.time += 6;
             gameManagerScript.ChangeScene("Progreso");
         }
     }
