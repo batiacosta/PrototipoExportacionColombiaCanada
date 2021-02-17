@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
         playerAnimator = actualPLayer.GetComponent<Animator>();
         playerAnimator.SetBool("iDLE", true);
         mapManager = GameObject.Find("LevelManager").GetComponent<MapManager>();
-        transform.position = new Vector2(-7.52f, -2.44f);
+        transform.position = gameManager.playerPosition;
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class PlayerManager : MonoBehaviour
         isOnTargetPosition = false;
         temporalNumber = statusNumber;
         isWaitingForOpeningDialog = true;
+        
     }
     void MovePLayerToPosition() {
         if (temporalNumber < currenStagePosition) {
@@ -62,6 +63,7 @@ public class PlayerManager : MonoBehaviour
             {
                 //  Show dialog
                 mapManager.OpenPlayerDialog(current);
+                gameManager.UpdatePlayerPosition(transform.position);
             }
         }
         else

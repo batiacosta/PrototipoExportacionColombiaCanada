@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip bienSound;
     public AudioClip badSound;
+    public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
     public int time;
     public int money = 10000;
@@ -47,6 +48,10 @@ public class GameManager : MonoBehaviour
                 tutorialScript.MissionComplete();
             }
         }
+    }
+    public void UpdatePlayerPosition(Vector2 pos)
+    {
+        playerPosition = pos;
     }
     private void UpdateVisualValues() {
         if (hiddenLevel == 0)   //  Muestra todos los valores
