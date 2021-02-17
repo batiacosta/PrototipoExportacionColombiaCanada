@@ -30,7 +30,7 @@ public class ProductorManager : MonoBehaviour
     {
         gameManagerScript.SetHiddenLevel(0);
 
-        ResetGoalValues(2);
+        ResetGoalValues(8);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
         dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", "El prouctor debe de cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
@@ -49,13 +49,19 @@ public class ProductorManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El productor requiere:\n"
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Nombre y ubicación del predio\n"
-            + "3. Certificación del contrato del ingeniero agrónomo\n"
-            + "4. Nombre de las especies a exportar\n"
-            + "\nAcabas de activar un nuevo módulo");
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El productor debe cumplir en su Infraestructura con:\n"
+            + "\nArea de Registros, " + "Señalización, "
+            + "Area de insumos agrícolas, " + "Almacen de herramientas, "
+            + "Area acopioCosecha, "+ "Plano, "
+            + "Kit Primeros Auxilios. \n\n"
+            + "El productor debe cumplir en su Documentación con:\n"
+            + "\nSolicitud firmada Persona Natural o Jurídica, \n"
+            + "Nombre y contacto Representante Legal, "
+            + "Datos del Predio y su ubicación, "
+            + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
+            + "Nombre de especies cultivadas, "
+            + "Datos Empresa.\n\n"
+            + "\n¡Acabas de activar un nuevo Módulo!");
     }
 
     public void CloseDialog()
@@ -78,18 +84,24 @@ public class ProductorManager : MonoBehaviour
         instrucciones.gameObject.SetActive(false);
         if (instructionsCounter == 1)
         {
-            bubbleSpawner.gameObject.SetActive(true);
-            bubbleSpawner.GetComponent<BubbleSpawner>().bubbleScale = 1;
+            isBubble = false;
+            globeSpawner.gameObject.SetActive(true);
         }
         else if (instructionsCounter == 2)
         {
-            isBubble = false;
+            isBubble = true;
+            globeSpawner.gameObject.SetActive(false);
             bubbleSpawner.gameObject.SetActive(false);
             segundaInstruccion();
         }
         else if (instructionsCounter == 3)
         {
-            globeSpawner.gameObject.SetActive(true);
+            ResetGoalValues(7);
+            bubbleSpawner.gameObject.SetActive(true);
+        }
+        else if (instructionsCounter == 4)
+        {
+            SegundoDialogo();
         }
     }
     public void CloseMal()
@@ -104,12 +116,17 @@ public class ProductorManager : MonoBehaviour
             if (isBubble)
             {
                 instrucciones.gameObject.SetActive(true);
+                bubbleSpawner.gameObject.SetActive(false);
                 instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                gameManagerScript.enabledLevels = 4;
+               
             }
             else
             {
-                gameManagerScript.enabledLevels = 3;
-                SegundoDialogo();
+                instrucciones.gameObject.SetActive(true);
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                /*gameManagerScript.enabledLevels = 3;
+                SegundoDialogo();*/
             }
 
             logrados = 0;
@@ -130,19 +147,29 @@ public class ProductorManager : MonoBehaviour
     }
     void PrimeraInstruccion()
     {
-        isBubble = true;
+        isBubble = false;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere:\n" + "\n1. Registro Exportador ICA\n" + "2. Resolución ICA 448/2016\n" + "\nEscoge las burbujas corrrectas.");
+        instrucciones.GetComponent<Instructions>().SetTexto("Requisitos Documentales:\n" 
+            + "\n1. Solicitud firmada Persona Natural o Jurídica.\n"
+            + "2. Nombre y contacto Representante Legal.\n"
+            + "3. Datos del Predio y su ubicación.\n"
+            + "4. Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional.\n"
+            + "5. Nombre de especies cultivadas.\n"
+            + "6. Datos Empresa.\n"
+            + "\nArrastra los globos segun corresponda Falso o Verdadero.");
     }
     void segundaInstruccion()
     {
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n"
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n"
+        instrucciones.GetComponent<Instructions>().SetTexto("El productor tiene los siguientes Requerimientos de Infraestructura:\n"
+           + "\n1. Area de Registros\n"
+            + "2. Señalización\n"
+            + "3. Area de insumos agrícolas\n"
+            + "3. Almacen de herramientas\n"
+            + "4. Area acopioCosecha\n"
+            + "4. Plano\n"
+            + "4. Kit Primeros Auxilios\n"
             + "\nEscoge las burbujas corrrectas.");
     }
 

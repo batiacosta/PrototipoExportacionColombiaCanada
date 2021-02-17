@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7176076620579111931}
   - component: {fileID: 7176076620579111930}
   - component: {fileID: 7176076620579111933}
-  - component: {fileID: 7176076620579111932}
   - component: {fileID: 7176076620579111927}
   - component: {fileID: 7176076620579111926}
   - component: {fileID: 7176076620579111929}
@@ -106,25 +105,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7176076620579111932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7176076620579111935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b01791d93d6844087b83e475adb930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogPanel: {fileID: 4859302293882503401}
-  instrucciones: {fileID: 8982064949120570322}
-  malDialog: {fileID: 6183844678504351299}
-  bubbleSpawner: {fileID: 0}
-  globeSpawner: {fileID: 0}
-  total: 0
-  logrados: 0
 --- !u!114 &7176076620579111927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +284,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7176076620579111932}
+      objectReference: {fileID: 0}
     - target: {fileID: 6589138398243682090, guid: fdbeef3dd91ac274790901e242b8fb05,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -312,12 +292,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdbeef3dd91ac274790901e242b8fb05, type: 3}
---- !u!1 &6183844678504351299 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3911348043419444530, guid: fdbeef3dd91ac274790901e242b8fb05,
-    type: 3}
-  m_PrefabInstance: {fileID: 7176076619606287217}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8080967931484799420 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1419713803123679949, guid: fdbeef3dd91ac274790901e242b8fb05,
@@ -450,7 +424,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7176076620579111932}
+      objectReference: {fileID: 0}
     - target: {fileID: 8216408457841249811, guid: 841d9551719cefb4fa120e642f3976f9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -458,12 +432,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 841d9551719cefb4fa120e642f3976f9, type: 3}
---- !u!1 &8982064949120570322 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2247366381491756043, guid: 841d9551719cefb4fa120e642f3976f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7176076619883810777}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6436351984757445677 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4234526786243795956, guid: 841d9551719cefb4fa120e642f3976f9,
@@ -606,7 +574,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7176076620579111932}
+      objectReference: {fileID: 0}
     - target: {fileID: 2375998562574162962, guid: daff4d4252749154786b9bcf65444b47,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -624,12 +592,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daff4d4252749154786b9bcf65444b47, type: 3}
---- !u!1 &4859302293882503401 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2375998562349532887, guid: daff4d4252749154786b9bcf65444b47,
-    type: 3}
-  m_PrefabInstance: {fileID: 7176076620077549118}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4859302293882503400 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2375998562349532886, guid: daff4d4252749154786b9bcf65444b47,

@@ -85,6 +85,7 @@ public class ExportadorManager : MonoBehaviour
         {
             isBubble = false;
             bubbleSpawner.gameObject.SetActive(false);
+            globeSpawner.gameObject.SetActive(true);
             segundaInstruccion();
         }
         else if (instructionsCounter == 3)

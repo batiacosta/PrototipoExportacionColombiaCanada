@@ -17,7 +17,7 @@ public class GlobeProperties : MonoBehaviour
     bool isDrag = false;
 
     [SerializeField] private float xRange = 8;
-    [SerializeField] private float yBound = -15;
+    [SerializeField] private float yBound = -17;
     // Start is called before the first frame update
     public void AssignId(int i)
     {
@@ -37,7 +37,7 @@ public class GlobeProperties : MonoBehaviour
         {
             if (transform.position.y < yBound)
             {
-                transform.position = new Vector2(transform.position.x, 10);
+                transform.position = new Vector2(transform.position.x, 15);
             }
             Move();
         }

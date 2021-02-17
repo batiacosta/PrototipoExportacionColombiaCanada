@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Envio.unity
     guid: 45b97b89b67a6ec4296c96e04c514ac2
+  - enabled: 1
+    path: Assets/Scenes/Productor.unity
+    guid: 07de4f79ee4dbb34bb0595a84d04d43d
   m_configObjects: {}
