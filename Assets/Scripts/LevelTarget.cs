@@ -25,6 +25,7 @@ public class LevelTarget : MonoBehaviour
     {
         if (isEnabled)
         {
+            playerScript.current = statusNumber;
             playerScript.SetNewTargetPosition(transform.position, statusNumber);
         }
         else

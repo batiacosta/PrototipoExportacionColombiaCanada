@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
-public class Login : MonoBehaviour
+public class Instructions : MonoBehaviour
 {
+    public TextMeshProUGUI texto;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,8 @@ public class Login : MonoBehaviour
     {
         
     }
-    public void GotoTutorialScene()
+    public void SetTexto(string txt)
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Tutorial");
+        texto.text = txt;
     }
 }

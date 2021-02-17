@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Login : MonoBehaviour
+public class FinalScreen : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,8 +16,8 @@ public class Login : MonoBehaviour
     {
         
     }
-    public void GotoTutorialScene()
+    public void GoToForm()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Tutorial");
+        Application.OpenURL("https://forms.gle/15dwWNvMzTXYwZ5z5");
     }
 }

@@ -5,16 +5,21 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     bool isOnTargetPosition = true;
-    public Vector2 targetPosition;
-    [SerializeField] float speed = 10;
-    public GameObject actualPLayer;
-    private Animator playerAnimator;
+    bool isWaitingForOpeningDialog = false;
     public int currenStagePosition;
-    MapManager mapManager;
-    int temporalNumber = 0;
+    private int temporalNumber = 0;
+    private float speed = 5;
+    public Vector2 targetPosition;
+    public GameObject actualPLayer;
+    public int current = 1;
+    private Animator playerAnimator;
+    private MapManager mapManager;
+    private GameManager gameManager;
+    
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerAnimator = actualPLayer.GetComponent<Animator>();
         playerAnimator.SetBool("iDLE", true);
         mapManager = GameObject.Find("LevelManager").GetComponent<MapManager>();
@@ -29,10 +34,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void SetNewTargetPosition(Vector2 newPosition,int statusNumber) {
+    
+
+    public void SetNewTargetPosition(Vector2 newPosition, int statusNumber) {
         targetPosition = newPosition;
         isOnTargetPosition = false;
         temporalNumber = statusNumber;
+        isWaitingForOpeningDialog = true;
     }
     void MovePLayerToPosition() {
         if (temporalNumber < currenStagePosition) {
@@ -50,6 +58,11 @@ public class PlayerManager : MonoBehaviour
         if (currentPosition == targetPosition) {
             isOnTargetPosition = true;
             playerAnimator.SetBool("iDLE", true);
+            if (isWaitingForOpeningDialog)
+            {
+                //  Show dialog
+                mapManager.OpenPlayerDialog(current);
+            }
         }
         else
         {
