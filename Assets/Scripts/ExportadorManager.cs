@@ -8,6 +8,7 @@ public class ExportadorManager : MonoBehaviour
     public GameObject instrucciones;
     public GameObject malDialog;
     public GameObject bubbleSpawner;
+    public GameObject globeSpawner;
     private GameManager gameManagerScript;
     public int total;
     public int logrados;
@@ -20,6 +21,7 @@ public class ExportadorManager : MonoBehaviour
         counterDialog = 0;
         instrucciones.gameObject.SetActive(false);
         bubbleSpawner.gameObject.SetActive(false);
+        globeSpawner.gameObject.SetActive(false);
         malDialog.gameObject.SetActive(false);
         instructionsCounter = 0;
         PrimerDialogo();
@@ -47,8 +49,12 @@ public class ExportadorManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Resumen Exportador", "El Exportador debe de contar con un registro como Exportador ante el ICA, y debe de contar con la resoución 448/2016\n"
-            + "El proceso de certificación tarda aaproximadamente 6 meses\n");
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El exportador requiere los siguientes datos:\n"
+            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
+            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
+            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
+            + "4. Nombre de las especies a exportar\n"
+            + "\nAcabas de activar un nuevo módulo");
     }
 
     public void CloseDialog()
@@ -78,7 +84,11 @@ public class ExportadorManager : MonoBehaviour
         {
             isBubble = false;
             bubbleSpawner.gameObject.SetActive(false);
-            bubbleSpawner.GetComponent<BubbleSpawner>().bubbleScale = 1;
+            segundaInstruccion();
+        }
+        else if (instructionsCounter == 3)
+        {
+            globeSpawner.gameObject.SetActive(true);
         }
     }
     public void CloseMal()
@@ -92,10 +102,15 @@ public class ExportadorManager : MonoBehaviour
         {
             if (isBubble)
             {
-                //
+                instrucciones.gameObject.SetActive(true);
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
             }
-            instrucciones.gameObject.SetActive(true);
-            instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+            else
+            {
+                gameManagerScript.enabledLevels = 3;
+                SegundoDialogo();
+            }
+            
             logrados = 0;
         }
     }
@@ -106,6 +121,10 @@ public class ExportadorManager : MonoBehaviour
             malDialog.gameObject.SetActive(true);
             malDialog.GetComponent<MalDialogManager>().SetTextContent("La resolución ICA 20 de 2016 no existe. Se requiere la 448 de 2016");
         }
+        else
+        {
+            malDialog.GetComponent<MalDialogManager>().SetTextContent("El número de empleados no es un dato requerido");
+        }
     }
     void PrimeraInstruccion()
     {
@@ -115,7 +134,14 @@ public class ExportadorManager : MonoBehaviour
     }
     void segundaInstruccion()
     {
-
+        ResetGoalValues(5);
+        instrucciones.gameObject.SetActive(true);
+        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n" 
+            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
+            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
+            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
+            + "4. Nombre de las especies a exportar\n" 
+            + "\nEscoge las burbujas corrrectas.");
     }
 
     // Update is called once per frame
