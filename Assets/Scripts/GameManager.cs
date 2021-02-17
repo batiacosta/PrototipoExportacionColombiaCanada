@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public AudioClip badSound;
     public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
-    public int time;
+    public int time = 0;
     public int money = 10000;
     public int lives;
     public int logrados;

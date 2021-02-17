@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExportadorManager : MonoBehaviour
+public class ProductorManager : MonoBehaviour
 {
     public GameObject dialogPanel;
     public GameObject instrucciones;
@@ -33,9 +33,9 @@ public class ExportadorManager : MonoBehaviour
         ResetGoalValues(2);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", "El exportador es generalmente el empresario que contacta a un productor certificado en Colombia y a un importador canadiense certificado a quien le vende el producto.\n"
-            + "Debe de contar con un registro ICA como exportador y la resolución ICA 448/2016\n"
-            + "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", "El prouctor debe de cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
+            + "En este módulo se mencionan algunos de esos requisitos que irán clasificados en Documentales y de Infraestructura\n"
+            + "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido.");
     }
 
     public void ResetGoalValues(int t)
@@ -47,13 +47,13 @@ public class ExportadorManager : MonoBehaviour
     void SegundoDialogo()
     {
         gameManagerScript.SetHiddenLevel(0);
-        gameManagerScript.time +=6;
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El exportador requiere los siguientes datos:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El productor requiere:\n"
             + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
             + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
+            + "3. Nombre y ubicación del predio\n"
+            + "3. Certificación del contrato del ingeniero agrónomo\n"
             + "4. Nombre de las especies a exportar\n"
             + "\nAcabas de activar un nuevo módulo");
     }
@@ -81,7 +81,7 @@ public class ExportadorManager : MonoBehaviour
             bubbleSpawner.gameObject.SetActive(true);
             bubbleSpawner.GetComponent<BubbleSpawner>().bubbleScale = 1;
         }
-        else if(instructionsCounter == 2)
+        else if (instructionsCounter == 2)
         {
             isBubble = false;
             bubbleSpawner.gameObject.SetActive(false);
@@ -111,7 +111,7 @@ public class ExportadorManager : MonoBehaviour
                 gameManagerScript.enabledLevels = 3;
                 SegundoDialogo();
             }
-            
+
             logrados = 0;
         }
     }
@@ -132,23 +132,23 @@ public class ExportadorManager : MonoBehaviour
     {
         isBubble = true;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere:\n"+"\n1. Registro Exportador ICA\n"+"2. Resolución ICA 448/2016\n"+"\nEscoge las burbujas corrrectas.");
+        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere:\n" + "\n1. Registro Exportador ICA\n" + "2. Resolución ICA 448/2016\n" + "\nEscoge las burbujas corrrectas.");
     }
     void segundaInstruccion()
     {
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n" 
+        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n"
             + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
             + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n" 
+            + "4. Nombre de las especies a exportar\n"
             + "\nEscoge las burbujas corrrectas.");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
