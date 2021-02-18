@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExportadorManager : MonoBehaviour
+public class PresentacionComercialManager : MonoBehaviour
 {
     public GameObject dialogPanel;
     public GameObject instrucciones;
     public GameObject malDialog;
     public GameObject bubbleSpawner;
-    public GameObject globeSpawner;
     private GameManager gameManagerScript;
     public int total;
     public int logrados;
@@ -21,7 +20,6 @@ public class ExportadorManager : MonoBehaviour
         counterDialog = 0;
         instrucciones.gameObject.SetActive(false);
         bubbleSpawner.gameObject.SetActive(false);
-        globeSpawner.gameObject.SetActive(false);
         malDialog.gameObject.SetActive(false);
         instructionsCounter = 0;
         PrimerDialogo();
@@ -30,12 +28,10 @@ public class ExportadorManager : MonoBehaviour
     {
         gameManagerScript.SetHiddenLevel(0);
 
-        ResetGoalValues(2);
+        ResetGoalValues(6);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", "El exportador es generalmente el empresario que contacta a un productor certificado en Colombia y a un importador canadiense certificado a quien le vende el producto.\n"
-            + "Debe de contar con un registro ICA como exportador y la resolución ICA 448/2016\n"
-            + "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", "La gulupa debe de estar en una caja que debe de contener los datos que permitan dar una trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el registro de la planta empacadora, pues ésta debe de estar también certificada.");
     }
 
     public void ResetGoalValues(int t)
@@ -47,14 +43,16 @@ public class ExportadorManager : MonoBehaviour
     void SegundoDialogo()
     {
         gameManagerScript.SetHiddenLevel(0);
-        gameManagerScript.time +=6;
+        //gameManagerScript.time += 6;
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El exportador requiere los siguientes datos:\n"
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n"
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "La presentación comercial cuenta con:\n"
+            + "\n1. Peso en Kg\n"
+            + "2. Fecha de producción\n"
+            + "3. Número del establecimiento\n"
+            + "4. Fecha de Caducidad\n"
+            + "5. Código del predio\n"
+            + "6. Registro Empacadora\n"
             + "\nAcabas de activar un nuevo módulo");
     }
 
@@ -68,6 +66,7 @@ public class ExportadorManager : MonoBehaviour
         }
         if (counterDialog == 2)
         {
+            gameManagerScript.enabledLevels = 6;
             gameManagerScript.ChangeScene("Progreso");
         }
     }
@@ -81,16 +80,14 @@ public class ExportadorManager : MonoBehaviour
             bubbleSpawner.gameObject.SetActive(true);
             bubbleSpawner.GetComponent<BubbleSpawner>().bubbleScale = 1;
         }
-        else if(instructionsCounter == 2)
+        else if (instructionsCounter == 2)
         {
             isBubble = false;
             bubbleSpawner.gameObject.SetActive(false);
-            globeSpawner.gameObject.SetActive(true);
-            segundaInstruccion();
+            //segundaInstruccion();
         }
         else if (instructionsCounter == 3)
         {
-            globeSpawner.gameObject.SetActive(true);
         }
     }
     public void CloseMal()
@@ -104,15 +101,15 @@ public class ExportadorManager : MonoBehaviour
         {
             if (isBubble)
             {
-                instrucciones.gameObject.SetActive(true);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                //instrucciones.gameObject.SetActive(true);
+                SegundoDialogo();
             }
             else
             {
-                gameManagerScript.enabledLevels = 3;
+                gameManagerScript.enabledLevels = 6;
                 SegundoDialogo();
             }
-            
+
             logrados = 0;
         }
     }
@@ -122,7 +119,7 @@ public class ExportadorManager : MonoBehaviour
         if (isBubble)
         {
             malDialog.gameObject.SetActive(true);
-            malDialog.GetComponent<MalDialogManager>().SetTextContent("La resolución ICA 20 de 2016 no existe. Se requiere la 448 de 2016");
+            malDialog.GetComponent<MalDialogManager>().SetTextContent("El color y el tamaño son irrelevantes, siempre y cuando se tenga la trazabilidad del producto");
         }
         else
         {
@@ -133,17 +130,25 @@ public class ExportadorManager : MonoBehaviour
     {
         isBubble = true;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere:\n"+"\n1. Registro Exportador ICA\n"+"2. Resolución ICA 448/2016\n"+"\nEscoge las burbujas corrrectas.");
+        instrucciones.GetComponent<Instructions>().SetTexto("La presentación comercial debe tener:\n" 
+            + "\n1. Peso en Kg\n" 
+            + "2. Fecha de producción\n"
+            + "3. Número del establecimiento\n"
+            + "4. Fecha de Caducidad\n"
+            + "5. Código del predio\n"
+            + "6. Registro Empacadora\n"
+
+            + "\nEscoge las burbujas corrrectas.");
     }
     void segundaInstruccion()
     {
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n" 
+        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n"
             + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
             + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n" 
+            + "4. Nombre de las especies a exportar\n"
             + "\nEscoge las burbujas corrrectas.");
     }
 }
