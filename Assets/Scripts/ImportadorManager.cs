@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProductorManager : MonoBehaviour
+public class ImportadorManager : MonoBehaviour
 {
     public GameObject dialogPanel;
     public GameObject instrucciones;
     public GameObject malDialog;
-    public GameObject bubbleSpawner;
     public GameObject globeSpawner;
     private GameManager gameManagerScript;
     public int total;
@@ -20,7 +19,6 @@ public class ProductorManager : MonoBehaviour
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         counterDialog = 0;
         instrucciones.gameObject.SetActive(false);
-        bubbleSpawner.gameObject.SetActive(false);
         globeSpawner.gameObject.SetActive(false);
         malDialog.gameObject.SetActive(false);
         instructionsCounter = 0;
@@ -30,12 +28,10 @@ public class ProductorManager : MonoBehaviour
     {
         gameManagerScript.SetHiddenLevel(0);
 
-        ResetGoalValues(8);
+        ResetGoalValues(2);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", "El prouctor debe de cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
-            + "En este módulo se mencionan algunos de esos requisitos que irán clasificados en Documentales y de Infraestructura\n"
-            + "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Módulo de importador", "El comerciante exportador debe de buscar un cliente Importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos");
     }
 
     public void ResetGoalValues(int t)
@@ -49,19 +45,7 @@ public class ProductorManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El productor debe cumplir en su Infraestructura con:\n"
-            + "\nArea de Registros, " + "Señalización, "
-            + "Area de insumos agrícolas, " + "Almacen de herramientas, "
-            + "Area acopioCosecha, "+ "Plano, "
-            + "Kit Primeros Auxilios. \n\n"
-            + "El productor debe cumplir en su Documentación con:\n"
-            + "\nSolicitud firmada Persona Natural o Jurídica, \n"
-            + "Nombre y contacto Representante Legal, "
-            + "Datos del Predio y su ubicación, "
-            + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
-            + "Nombre de especies cultivadas, "
-            + "Datos Empresa.\n\n"
-            + "\n¡Acabas de activar un nuevo Módulo!");
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos");
     }
 
     public void CloseDialog()
@@ -75,6 +59,7 @@ public class ProductorManager : MonoBehaviour
         if (counterDialog == 2)
         {
             gameManagerScript.time += 6;
+            gameManagerScript.enabledLevels = 5;
             gameManagerScript.ChangeScene("Progreso");
         }
     }
@@ -92,17 +77,15 @@ public class ProductorManager : MonoBehaviour
         {
             isBubble = true;
             globeSpawner.gameObject.SetActive(false);
-            bubbleSpawner.gameObject.SetActive(false);
-            segundaInstruccion();
+            SegundoDialogo();
         }
         else if (instructionsCounter == 3)
         {
             ResetGoalValues(7);
-            bubbleSpawner.gameObject.SetActive(true);
         }
         else if (instructionsCounter == 4)
         {
-            SegundoDialogo();
+            //SegundoDialogo();
         }
     }
     public void CloseMal()
@@ -117,15 +100,16 @@ public class ProductorManager : MonoBehaviour
             if (isBubble)
             {
                 instrucciones.gameObject.SetActive(true);
-                bubbleSpawner.gameObject.SetActive(false);
                 instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
                 gameManagerScript.enabledLevels = 4;
-               
+                //SegundoDialogo();
+
             }
             else
             {
-                instrucciones.gameObject.SetActive(true);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                //instrucciones.gameObject.SetActive(true);
+                SegundoDialogo();
+                //instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
                 /*gameManagerScript.enabledLevels = 3;
                 SegundoDialogo();*/
             }
@@ -144,20 +128,15 @@ public class ProductorManager : MonoBehaviour
         else
         {
             malDialog.gameObject.SetActive(true);
-            malDialog.GetComponent<MalDialogManager>().SetTextContent("La cantidad de cabezas de ganado o número de empleados no son datos relevantes en la documentación.");
+            malDialog.GetComponent<MalDialogManager>().SetTextContent("El registro del importador es un registro canadiense");
         }
     }
     void PrimeraInstruccion()
     {
         isBubble = false;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("Requisitos Documentales:\n" 
-            + "\n1. Solicitud firmada Persona Natural o Jurídica.\n"
-            + "2. Nombre y contacto Representante Legal.\n"
-            + "3. Datos del Predio y su ubicación.\n"
-            + "4. Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional.\n"
-            + "5. Nombre de especies cultivadas.\n"
-            + "6. Datos Empresa.\n"
+        instrucciones.GetComponent<Instructions>().SetTexto("El importador debe contar con:\n"
+            + "\n1. Business Number.\n"
             + "\nArrastra los globos segun corresponda Falso o Verdadero.");
     }
     void segundaInstruccion()
@@ -174,7 +153,5 @@ public class ProductorManager : MonoBehaviour
             + "4. Kit Primeros Auxilios\n"
             + "\nEscoge las burbujas corrrectas.");
     }
-
-    // Update is called once per frame
 
 }

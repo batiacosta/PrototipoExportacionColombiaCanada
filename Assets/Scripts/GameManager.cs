@@ -149,6 +149,10 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Find("LevelManager").GetComponent<ProductorManager>().Bien();
         }
+        else if (currentScene == "Importador")
+        {
+            GameObject.Find("LevelManager").GetComponent<ImportadorManager>().Bien();
+        }
     }
     public void Mal(int id)
     {
