@@ -157,6 +157,10 @@ public class GameManager : MonoBehaviour
         {
             GameObject.Find("LevelManager").GetComponent<PresentacionComercialManager>().Bien();
         }
+        else if (currentScene == "Envio")
+        {
+            GameObject.Find("LevelManager").GetComponent<EnvioManager>().Bien();
+        }
     }
     public void Mal(int id)
     {
@@ -171,6 +175,23 @@ public class GameManager : MonoBehaviour
         }else if (currentScene == "Exportador")
         {
             GameObject.Find("LevelManager").GetComponent<ExportadorManager>().Mal(id);
+        }
+        else if (currentScene == "Importador")
+        {
+            GameObject.Find("LevelManager").GetComponent<ImportadorManager>().Mal(id);
+        }
+        else if (currentScene == "Productor")
+        {
+            GameObject.Find("LevelManager").GetComponent<ProductorManager>().Mal(id);
+        }
+        else if (currentScene == "PresentacionComercial")
+        {
+            GameObject.Find("LevelManager").GetComponent<PresentacionComercialManager>().Mal(id);
+        }
+        else if (currentScene == "Envio")
+        {
+            GameObject.Find("LevelManager").GetComponent<EnvioManager>().Mal(id);
+
         }
     }
 

@@ -128,7 +128,9 @@ public class MapManager : MonoBehaviour
         dialogPanel.gameObject.SetActive(true);
         GetDialogScript();
         dialogoScript.HiceDancelar();
-        dialogoScript.SetText("Exportación de Gulupa", "Bienvenido a este juego con el que reforzarás algunos conceptos clave en el proceso de exportación de la Gulupa (Purple Passion Fruit) desde Colombia hacia Canadá. \n\nA continuación encontrarás un mapa con el progreso que vayas realizando conforme avances en cada módulo.");
+        dialogoScript.SetText("Exportación de Gulupa", 
+            "Bienvenido a este juego con el que reforzarás algunos conceptos clave en el proceso de exportación de la Gulupa (Purple Passion Fruit) desde Colombia hacia Canadá. \n\nA continuación encontrarás un mapa con el progreso que vayas realizando conforme avances en cada módulo.\n\n\n"
+            +"Haz click sobre la piedra color Lila");
     }
 
     private void GetDialogScript()
