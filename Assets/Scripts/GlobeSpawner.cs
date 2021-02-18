@@ -16,7 +16,7 @@ public class GlobeSpawner : MonoBehaviour
     [SerializeField] private float xRange = 2;
     public GameObject globePrefab;
     public List<GameObject> spawnedGlobes;
-    private float spawningTime = 0.7f;
+    private float spawningTime = 1.4f;
     public bool isImage;
     public int qty;
     public void Start()

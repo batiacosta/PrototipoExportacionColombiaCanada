@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a791ae8f718c94a8934e711855a3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingSpeed: 0
+  fallingSpeed: 3
 --- !u!114 &221455424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ PrefabInstance:
     - target: {fileID: 4234526786243795956, guid: 841d9551719cefb4fa120e642f3976f9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4234526786243795956, guid: 841d9551719cefb4fa120e642f3976f9,
         type: 3}
@@ -1079,7 +1079,7 @@ PrefabInstance:
     - target: {fileID: 1419713803123679949, guid: fdbeef3dd91ac274790901e242b8fb05,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1419713803123679949, guid: fdbeef3dd91ac274790901e242b8fb05,
         type: 3}

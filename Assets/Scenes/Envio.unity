@@ -271,7 +271,7 @@ PrefabInstance:
     - target: {fileID: 7176076620579111929, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
       propertyPath: fallingSpeed
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7176076620579111935, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
