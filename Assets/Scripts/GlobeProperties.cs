@@ -15,6 +15,7 @@ public class GlobeProperties : MonoBehaviour
     Vector3 mousePosition;
     public float followSpeed = 1000;
     bool isDrag = false;
+    int xBound = 5;
 
     [SerializeField] private float xRange = 8;
     [SerializeField] private float yBound = -17;
@@ -41,7 +42,9 @@ public class GlobeProperties : MonoBehaviour
             }
             Move();
         }
-        else {
+        if(transform.position.x >5 || transform.position.x < -5)
+        {
+            transform.position = new Vector2(0, transform.position.y);
         }
     }
     public void SetGlobeImage(Sprite imagen, bool right)
