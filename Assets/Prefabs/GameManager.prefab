@@ -345,12 +345,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -401,12 +401,14 @@ MonoBehaviour:
   remainT: {fileID: 6670876235544370257}
   bienSound: {fileID: 8300000, guid: f580ff50d754c344fa4104b1ae97625f, type: 3}
   badSound: {fileID: 8300000, guid: d035361f8ea0e6b4dbb2e094b11c8256, type: 3}
+  playerPosition: {x: -7.52, y: -2.44}
   enabledLevels: 2
   time: 0
   money: 0
   lives: 0
   logrados: 0
   total: 0
+  isFirstTime: 0
   hiddenLevel: 0
 --- !u!114 &1662711444127932274
 MonoBehaviour:

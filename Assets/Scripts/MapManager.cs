@@ -76,26 +76,28 @@ public class MapManager : MonoBehaviour
         if (currentStage == 2)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Exportador", "En esta sección vamos a realizar los desafíos consernientes a los requisitos mínimos con los que debe contar el comerciante exportador.");
+            playerDialog.GetComponent<DialogManager>().SetText("Exportador",
+                new string [] { "En esta sección vamos a realizar los desafíos de los requisitos mínimos para las certificaciones de los fitosanitarios que debe cumplir el exportador."});
         }else if (currentStage == 3)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Productor", "En esta sección vamos a realizar los desafíos consernientes a los requisitos mínimos con los que debe contar el Productor, quien siembra la Gulupa en este caso.");
+            playerDialog.GetComponent<DialogManager>().SetText("Productor", new string[] {"En esta sección vamos a realizar los desafíos consernientes a los requisitos mínimos con los que debe contar el Productor, quien siembra la Gulupa en este caso.\n\n"
+                ,"La inocuidad de los alimentos puede definirse como el conjunto de condiciones y medidas necesarias durante la producción, almacenamiento, distribución y preparación de alimentos para asegurar que una vez ingeridos, no representen un riesgo para la salud." });
         }
         else if (currentStage == 4)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Importador", "En esta sección vamos arealizar los desafíos consernientes a como identificar al importador canadiense.");
+            playerDialog.GetComponent<DialogManager>().SetText("Importador", new string[] { "En esta sección vamos arealizar los desafíos consernientes a como identificar al importador canadiense." });
         }
         else if (currentStage == 5)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", "En esta sección se ven los elementos básicos con los que debe de contar la presentación comercial de la fruta");
+            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "En esta sección se ven los elementos básicos con los que debe de contar la presentación comercial de la fruta" });
         }
         else if (currentStage == 6)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Envío", "¿Qué requisitos y documentos se deben de tener a la mano en el momento del envío");
+            playerDialog.GetComponent<DialogManager>().SetText("Envío", new string[] { "¿Qué requisitos y documentos se deben de tener a la mano en el momento del envío" });
         }
         else if (currentStage == 7)
         {
@@ -128,9 +130,13 @@ public class MapManager : MonoBehaviour
         dialogPanel.gameObject.SetActive(true);
         GetDialogScript();
         dialogoScript.HiceDancelar();
-        dialogoScript.SetText("Exportación de Gulupa", 
-            "Bienvenido a este juego con el que reforzarás algunos conceptos clave en el proceso de exportación de la Gulupa (Purple Passion Fruit) desde Colombia hacia Canadá. \n\nA continuación encontrarás un mapa con el progreso que vayas realizando conforme avances en cada módulo.\n\n\n"
-            +"Haz click sobre la piedra color Lila");
+        dialogoScript.SetText("Requerimientos Fitosanitarios para exportación de Gulupa de Colombia a Canadá",
+
+            new string[] {"Este juego es una herramienta complementaria para entrenamiento de las condiciones fitosanitarias del sector agrícola de Colombia a Canadá.Caso de estudio: Requerimientos fitosanitarios para la exportación de la Gulupa.\n\n "
+           ,"Fito: Significa: “Planta” o “vegetal”, Definición de La Real Academia Española.\n"
+           ,"Fitosanitario: Es la prevención, y curación de las plantas.\n"
+           ,"Certificado Fitosanitario: Documento oficial que certifica que se cumple con los requerimientos técnicos que debe cumplir el exportador que solicita la entidad sanitaria al país que se va a exportar, avalando el proceso productivo del cultivo, para este caso la Gulupa.\n\n"
+           ,"Haz click sobre la piedra color Lila" });
     }
 
     private void GetDialogScript()
@@ -164,5 +170,9 @@ public class MapManager : MonoBehaviour
             stage.GetComponent<SpriteRenderer>().sprite = status[0];//Pendiente
             stage.GetComponent<LevelTarget>().isEnabled = false;
         }
+    }
+    public void Volver()
+    {
+        gameManagerScript.ChangeScene("MainMenu");
     }
 }

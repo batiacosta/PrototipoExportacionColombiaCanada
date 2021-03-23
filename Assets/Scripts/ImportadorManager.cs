@@ -31,7 +31,7 @@ public class ImportadorManager : MonoBehaviour
         ResetGoalValues(2);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Módulo de importador", "El comerciante exportador debe de buscar un cliente Importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos");
+        dialogPanel.GetComponent<DialogManager>().SetText("Módulo de importador", new string[] { "El comerciante exportador debe de buscar un cliente Importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" });
     }
 
     public void ResetGoalValues(int t)
@@ -45,7 +45,7 @@ public class ImportadorManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos");
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] { "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" });
     }
 
     public void CloseDialog()

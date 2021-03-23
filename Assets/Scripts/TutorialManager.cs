@@ -31,12 +31,8 @@ public class TutorialManager : MonoBehaviour
     private void FirstMission()
     {
         instructionsPanel.gameObject.SetActive(true);
-        instructionsPanel.GetComponent<Instructions>().SetTexto("Selecciona unicamente las burbujas con aves.");
+        instructionsPanel.GetComponent<Instructions>().SetTexto("Selecciona unicamente las burbujas con Frutas.");
         globeSpawner.gameObject.SetActive(false);
-        bubbleSpawner.gameObject.SetActive(true);
-        gameManagerScript.ResetTotal(3);
-        gameManagerScript.UpdateMoneyValue(10000);
-        ResetGoalValues(bubbleSpawner.GetComponent<BubbleSpawner>().goodImages.Length);
     }
     public void ResetGoalValues(int t)
     {
@@ -48,10 +44,10 @@ public class TutorialManager : MonoBehaviour
         if (counter == 1)
         {
             instructionsPanel.gameObject.SetActive(true);
-            instructionsPanel.GetComponent<Instructions>().SetTexto("Arrastra las cajas al lado que correspondan, si son aves o peces");
+            instructionsPanel.GetComponent<Instructions>().SetTexto("Arrastra las cajas al lado que correspondan, si son Frutas u Hortalizas");
             bubbleSpawner.gameObject.SetActive(false);
             globeSpawner.gameObject.SetActive(true);
-            gameManagerScript.ResetTotal(4);
+            gameManagerScript.ResetTotal(5);
             counter = 0;
             ResetGoalValues(4);
         }
@@ -63,12 +59,19 @@ public class TutorialManager : MonoBehaviour
         if (dialogCounter == 1) {
             FirstMission();
         }
+        else if(dialogCounter == 2)
+        {
+            bubbleSpawner.gameObject.SetActive(true);
+            gameManagerScript.ResetTotal(3);
+            gameManagerScript.UpdateMoneyValue(10000);
+            ResetGoalValues(bubbleSpawner.GetComponent<BubbleSpawner>().goodImages.Length);
+        }
         else if(dialogCounter == 3) {
             MissionComplete();
         }else if(dialogCounter == 5)
         {
             gameManagerScript.isFirstTime = true;
-            gameManagerScript.ChangeScene("Progreso");
+            gameManagerScript.ChangeScene("MainMenu");
         }
     }
     public void CloseMal()
@@ -78,7 +81,7 @@ public class TutorialManager : MonoBehaviour
     public void Mal(int id)
     {
         malDialog.gameObject.SetActive(true);
-        malDialog.GetComponent<MalDialogManager>().SetTextContent("Cada vez que falles, tu dinero disminuirá");
+        malDialog.GetComponent<MalDialogManager>().SetTextContent("Tu dinero se reducirá porque cada error representa un sobrecosto en dinero y tiempo por cada trámite que falles");
     }
     public void Bien()
     {
@@ -90,6 +93,11 @@ public class TutorialManager : MonoBehaviour
                 instructionsPanel.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
                 logrados = 0;  
         }
+    }
+
+    public void Volver()
+    {
+        gameManagerScript.ChangeScene("MainMenu");
     }
 
     // Update is called once per frame

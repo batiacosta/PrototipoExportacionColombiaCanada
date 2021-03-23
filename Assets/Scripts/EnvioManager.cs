@@ -33,7 +33,16 @@ public class EnvioManager : MonoBehaviour
         ResetGoalValues(1);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Proceso de Envío", "El proceso de envío de la gulupa es por vía aérea, este envío debe de contar con una factura donde se encuentren los datos verificables tanto del exportador, como del importador que veremos a continuación.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Proceso de Envío", new string[] { 
+            "El proceso de envío de la gulupa es por vía aérea, este envío debe de contar con una factura donde se encuentren los datos verificables tanto del exportador, como del importador."
+            ,"El exportador requiere los siguientes datos:\n"
+            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
+            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
+            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
+            + "4. Nombre de las especies a exportar\n"
+            , "El transporte de la Gulupa hacia Canadá debe de realizarse ÚNICAMENTE por vía aérea",
+            "El proceso del envío de no cumplir los requisitos implicará la pérdida de la mercancía, de modo que perderás dinero y tiempo mientras se realizan nuevamente los trámites y certificados que correspondan"
+        });
     }
 
     public void ResetGoalValues(int t)
@@ -48,12 +57,12 @@ public class EnvioManager : MonoBehaviour
         gameManagerScript.time += 6;
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El exportador requiere los siguientes datos:\n"
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n"
-            + "\nAcabas de activar un nuevo módulo");
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] { "El exportador requiere los siguientes datos:\n"
+            , "\n1. Solicitud firmada por persona Natural o Jurídica\n"
+            , "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
+            , "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
+            , "4. Nombre de las especies a exportar\n"
+            , "\nAcabas de activar un nuevo módulo" });
     }
 
     public void CloseDialog()
@@ -121,7 +130,7 @@ public class EnvioManager : MonoBehaviour
         if (isBubble)
         {
             malDialog.gameObject.SetActive(true);
-            malDialog.GetComponent<MalDialogManager>().SetTextContent("Unicamente se deben de enviar las Gulupas por vía aaérea");
+            malDialog.GetComponent<MalDialogManager>().SetTextContent("Unicamente se deben de enviar las Gulupas por vía aérea");
         }
         else
         {
@@ -139,9 +148,6 @@ public class EnvioManager : MonoBehaviour
         ResetGoalValues(3);
         instrucciones.gameObject.SetActive(true);
         instrucciones.GetComponent<Instructions>().SetTexto("Los datos que debe de tener la factura son:\n"
-            + "\n1. NIT de Exportador\n"
-            + "2. Business Number Importador\n"
-            + "3. Registro Exportador 6 Dígitos\n"
-            + "\nArrastra los globos hacia donde corresponda.");
+            + "\nArrastra los globos hacia el lado que corresponda.");
     }
 }

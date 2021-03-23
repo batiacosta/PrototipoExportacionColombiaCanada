@@ -19,40 +19,47 @@ public class GlobeSpawner : MonoBehaviour
     private float spawningTime = 1.4f;
     public bool isImage;
     public int qty;
+
     public void Start()
     {
+        Debug.Log("Entro a Start");
         GetComponent<Rigidbody2D>();
         if (isImage)
         {
-            //SetGlobeImages();
             qty = goodImages.Length + badImages.Length;
+            Debug.Log(qty);
             StartCoroutine(spawnImages());
         }
         else
         {
             qty = goodText.Length + badText.Length;
-            //SetGlobeText();
             StartCoroutine(spawnText());
         }
     }
     IEnumerator spawnImages()
     {
         qty = goodImages.Length + badImages.Length;
-        for (int i = 0; i < badImages.Length; i++)
-        {
-            spawnedGlobes.Add(Instantiate(globePrefab, setRandomPos(), globePrefab.transform.rotation));
-            spawnedGlobes[i].GetComponent<GlobeProperties>().SetGlobeImage(badImages[i], false);
-            spawnedGlobes[i].GetComponent<GlobeProperties>().id = i;
-            yield return new WaitForSeconds(spawningTime);
-        }
-        for (int i = badImages.Length; i < badImages.Length + goodImages.Length; i++)
-        {
-            spawnedGlobes.Add(Instantiate(globePrefab, setRandomPos(), globePrefab.transform.rotation));
-            spawnedGlobes[i].GetComponent<GlobeProperties>().SetGlobeImage(goodImages[i - badImages.Length], true);
-            spawnedGlobes[i].GetComponent<GlobeProperties>().id = i;
-            yield return new WaitForSeconds(spawningTime);
-        }
+        Debug.Log(badImages.Length);
+        Debug.Log(goodImages.Length);
+        int randomSpawner = Random.Range(0, 1);
+
+            for (int i = 0; i < badImages.Length; i++)
+            {
+                spawnedGlobes.Add(Instantiate(globePrefab, setRandomPos(), globePrefab.transform.rotation));
+                spawnedGlobes[i].GetComponent<GlobeProperties>().SetGlobeImage(badImages[i], false);
+                spawnedGlobes[i].GetComponent<GlobeProperties>().id = i;
+                yield return new WaitForSeconds(spawningTime);
+            }
+            for (int i = 0; i < goodImages.Length; i++)
+            {
+                spawnedGlobes.Add(Instantiate(globePrefab, setRandomPos(), globePrefab.transform.rotation));
+                spawnedGlobes[i+ badImages.Length].GetComponent<GlobeProperties>().SetGlobeImage(goodImages[i], true);
+                spawnedGlobes[i + badImages.Length].GetComponent<GlobeProperties>().id = i;
+                yield return new WaitForSeconds(spawningTime);
+            }
+
     }
+
     IEnumerator spawnText()
     {
         qty = goodText.Length + badText.Length;
@@ -63,11 +70,11 @@ public class GlobeSpawner : MonoBehaviour
             spawnedGlobes[i].GetComponent<GlobeProperties>().id = i;
             yield return new WaitForSeconds(spawningTime);
         }
-        for (int i = badText.Length; i < badText.Length + goodText.Length; i++)
+        for (int i = 0; i < goodText.Length ; i++)//badText.Length + goodText.Length
         {
             spawnedGlobes.Add(Instantiate(globePrefab, setRandomPos(), globePrefab.transform.rotation));
-            spawnedGlobes[i].GetComponent<GlobeProperties>().SetGlobeText(goodText[i - badText.Length], true);
-            spawnedGlobes[i].GetComponent<GlobeProperties>().id = i;
+            spawnedGlobes[i+ badText.Length].GetComponent<GlobeProperties>().SetGlobeText(goodText[i], true);
+            spawnedGlobes[i + badText.Length].GetComponent<GlobeProperties>().id = i;
             yield return new WaitForSeconds(spawningTime);
         }
     }

@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d37dbe2f828072a4687ec827ee685914, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -34}
+  m_AnchoredPosition: {x: 0, y: -67.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &972055222816970340
@@ -344,7 +344,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.6508794, y: 0}
+  m_Offset: {x: -4.5172863, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -355,7 +355,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.301759, y: 14.86}
+  m_Size: {x: 0.56894493, y: 14.86}
   m_EdgeRadius: 0
 --- !u!1 &972055223689882708
 GameObject:
@@ -475,7 +475,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.314589, y: 0}
+  m_Offset: {x: 3.9898813, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -486,7 +486,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.629178, y: 14.86}
+  m_Size: {x: 0.27859354, y: 14.86}
   m_EdgeRadius: 0
 --- !u!1 &972055223734347554
 GameObject:
@@ -547,7 +547,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d37dbe2f828072a4687ec827ee685914, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -597,7 +597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &972055223772925549
 Transform:
   m_ObjectHideFlags: 0
@@ -627,8 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disenoGlobo:
-  - {fileID: 21300000, guid: 7669d89fb7695c44d8bf406322bb65e5, type: 3}
-  - {fileID: 21300000, guid: ac01bb06f1ee3d146a0800e5e1ae887b, type: 3}
+  - {fileID: 21300000, guid: b73f52fe8b3c8564588d20593105a003, type: 3}
   izTittle: {fileID: 972055222816970341}
   deTittle: {fileID: 972055223962676065}
   goodImages:
@@ -718,12 +717,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -811,7 +810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -34}
+  m_AnchoredPosition: {x: 0, y: -67.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &972055223962676070

@@ -33,9 +33,13 @@ public class ExportadorManager : MonoBehaviour
         ResetGoalValues(2);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", "El exportador es generalmente el empresario que contacta a un productor certificado en Colombia y a un importador canadiense certificado a quien le vende el producto.\n"
-            + "Debe de contar con un registro ICA como exportador y la resolución ICA 448/2016\n"
-            + "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", new string[] {"El exportador es generalmente el empresario que contacta a un productor certificado en Colombia y a un importador canadiense certificado a quien le vende el producto.\n"
+            , "Debe de contar con un registro ICA como exportador y la resolución ICA 448/2006\n"
+            , "Solicitud firmada por persona Natural o Jurídica\n"
+            , "Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
+            , "Datos del Representante Legal: Nombre, Datos de contacto\n"
+            , "Nombre de la especie a exportar (Gulupa)\n"
+            , "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." });
     }
 
     public void ResetGoalValues(int t)
@@ -50,12 +54,13 @@ public class ExportadorManager : MonoBehaviour
         gameManagerScript.time +=6;
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El exportador requiere los siguientes datos:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"El exportador requiere los siguientes datos:\n"
             + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
             + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n"
-            + "\nAcabas de activar un nuevo módulo");
+            + "4. Nombre de la especie a exportar (Gulupa)\n"
+            , "Es muy importante saber que debe de contar con un registro ICA como exportador y la resolución ICA 448/2006\n"
+            , "\nAcabas de activar un nuevo módulo" });
     }
 
     public void CloseDialog()
@@ -133,17 +138,17 @@ public class ExportadorManager : MonoBehaviour
     {
         isBubble = true;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere:\n"+"\n1. Registro Exportador ICA\n"+"2. Resolución ICA 448/2016\n"+"\nEscoge las burbujas corrrectas.");
+        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere de un registro y una resolución ICA"+"\nEscoge las burbujas corrrectas.");
     }
     void segundaInstruccion()
     {
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
         instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere los siguientes datos:\n" 
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n" 
+            + "\n1. Solicitud firmada\n"
+            + "2. Datos de la Empresa\n"
+            + "3. Datos del Representante Legal\n"
+            + "4. La especie de fruta a exportar\n" 
             + "\nEscoge las burbujas corrrectas.");
     }
 }

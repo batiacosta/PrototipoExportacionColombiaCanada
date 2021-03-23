@@ -9,6 +9,7 @@ public class PresentacionComercialManager : MonoBehaviour
     public GameObject malDialog;
     public GameObject bubbleSpawner;
     private GameManager gameManagerScript;
+    public GameObject cajaImagen;
     public int total;
     public int logrados;
     int counterDialog = 0;
@@ -31,7 +32,7 @@ public class PresentacionComercialManager : MonoBehaviour
         ResetGoalValues(6);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", "La gulupa debe de estar en una caja que debe de contener los datos que permitan dar una trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el registro de la planta empacadora, pues ésta debe de estar también certificada.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "La gulupa debe de estar en una caja que debe de contener los datos que permitan dar una trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el registro de la planta empacadora, pues ésta debe de estar también certificada." });
     }
 
     public void ResetGoalValues(int t)
@@ -46,14 +47,19 @@ public class PresentacionComercialManager : MonoBehaviour
         //gameManagerScript.time += 6;
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "La presentación comercial cuenta con:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"La presentación comercial cuenta con:\n"
             + "\n1. Peso en Kg\n"
             + "2. Fecha de producción\n"
             + "3. Número del establecimiento\n"
             + "4. Fecha de Caducidad\n"
             + "5. Código del predio\n"
-            + "6. Registro Empacadora\n"
-            + "\nAcabas de activar un nuevo módulo");
+            + "6. Registro Empacadora"
+            , "\nAcabas de activar un nuevo módulo" });
+    }
+
+    public void CerrarImagen()
+    {
+        cajaImagen.gameObject.SetActive(false);
     }
 
     public void CloseDialog()
@@ -103,11 +109,13 @@ public class PresentacionComercialManager : MonoBehaviour
             {
                 //instrucciones.gameObject.SetActive(true);
                 SegundoDialogo();
+                cajaImagen.gameObject.SetActive(true);
             }
             else
             {
                 gameManagerScript.enabledLevels = 6;
                 SegundoDialogo();
+                cajaImagen.gameObject.SetActive(true);
             }
 
             logrados = 0;

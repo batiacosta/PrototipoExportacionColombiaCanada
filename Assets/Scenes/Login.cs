@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject gameManagerPrefab;
     void Start()
     {
+        GameObject gameManager = GameObject.Find("GameManager");
+        if (gameManager == null)
+        {
+            GameObject instanciaGameManager = Instantiate(gameManagerPrefab);
+            instanciaGameManager.gameObject.name = "GameManager";
+        }
+        else { 
         
+        }
     }
 
     // Update is called once per frame
@@ -18,6 +26,6 @@ public class Login : MonoBehaviour
     }
     public void GotoTutorialScene()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Tutorial");
+        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("MainMenu");
     }
 }

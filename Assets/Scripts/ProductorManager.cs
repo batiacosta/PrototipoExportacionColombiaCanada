@@ -33,9 +33,22 @@ public class ProductorManager : MonoBehaviour
         ResetGoalValues(8);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", "El productor debe de cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
-            + "En este módulo se mencionan algunos de esos requisitos que irán clasificados en Documentales y de Infraestructura\n"
-            + "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido.");
+        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", new string[] {"El productor debe de cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
+            , "En este módulo se mencionan algunos de esos requisitos que irán clasificados en Documentales y de Infraestructura\n"
+            ,"El productor debe cumplir en su Infraestructura con:\n"
+            + "\nArea de Registros, " + "Señalización, "
+            + "Area de insumos agrícolas, " + "Almacen de herramientas, "
+            + "Area acopioCosecha\n"
+            + "Plano \n"
+            + "Kit Primeros Auxilios. \n\n"
+            , "El productor debe cumplir en su Documentación con:\n"
+            + "\nSolicitud firmada Persona Natural o Jurídica, \n"
+            + "Nombre y contacto Representante Legal\n "
+            + "Datos del Predio y su ubicación\n "
+            + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional\n "
+            + "Nombre de especies cultivadas\n"
+            + "Datos Empresa."
+            , "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." });
     }
 
     public void ResetGoalValues(int t)
@@ -49,19 +62,19 @@ public class ProductorManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", "El productor debe cumplir en su Infraestructura con:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"El productor debe cumplir en su Infraestructura con:\n"
             + "\nArea de Registros, " + "Señalización, "
             + "Area de insumos agrícolas, " + "Almacen de herramientas, "
             + "Area acopioCosecha, "+ "Plano, "
             + "Kit Primeros Auxilios. \n\n"
-            + "El productor debe cumplir en su Documentación con:\n"
+            , "El productor debe cumplir en su Documentación con:\n"
             + "\nSolicitud firmada Persona Natural o Jurídica, \n"
             + "Nombre y contacto Representante Legal, "
             + "Datos del Predio y su ubicación, "
             + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
             + "Nombre de especies cultivadas, "
             + "Datos Empresa.\n\n"
-            + "\n¡Acabas de activar un nuevo Módulo!");
+            , "\n¡Acabas de activar un nuevo Módulo!" });
     }
 
     public void CloseDialog()
@@ -151,27 +164,20 @@ public class ProductorManager : MonoBehaviour
     {
         isBubble = false;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("Requisitos Documentales:\n" 
-            + "\n1. Solicitud firmada Persona Natural o Jurídica.\n"
-            + "2. Nombre y contacto Representante Legal.\n"
-            + "3. Datos del Predio y su ubicación.\n"
-            + "4. Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional.\n"
-            + "5. Nombre de especies cultivadas.\n"
-            + "6. Datos Empresa.\n"
+        instrucciones.GetComponent<Instructions>().SetTexto("¿Qué requisitos documentales debe cunmplir el productor?:\n" 
+            + "\nSolicitudes, datos de la empresa, "
+            + "datos del predio, "
+            + "contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
+            + "nombre de especies cultivadas.\n"
             + "\nArrastra los globos segun corresponda Falso o Verdadero.");
     }
     void segundaInstruccion()
     {
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El productor tiene los siguientes Requerimientos de Infraestructura:\n"
-           + "\n1. Area de Registros\n"
-            + "2. Señalización\n"
-            + "3. Area de insumos agrícolas\n"
-            + "3. Almacen de herramientas\n"
-            + "4. Area acopioCosecha\n"
-            + "4. Plano\n"
-            + "4. Kit Primeros Auxilios\n"
+        instrucciones.GetComponent<Instructions>().SetTexto("¿Qué requerimientos en infraestructura debe cumplir el productor?\n"
+           + "Areas y señalizaciones, planos y Kit de primeros auxilios."
+            + "\n"
             + "\nEscoge las burbujas corrrectas.");
     }
 
