@@ -25,7 +25,7 @@ public class MapManager : MonoBehaviour
         gameManagerScript = gameManager.GetComponent<GameManager>();
         if (gameManagerScript.isFirstTime)
         {
-            gameManagerScript.UpdateMoneyValue(10000);
+            gameManagerScript.UpdateMoneyValue(3000000);
             gameManagerScript.UpdateTimeValue(1);
             gameManagerScript.isFirstTime = false;
         }
@@ -87,12 +87,12 @@ public class MapManager : MonoBehaviour
         else if (currentStage == 4)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Importador", new string[] { "En esta sección vamos arealizar los desafíos consernientes a como identificar al importador canadiense." });
+            playerDialog.GetComponent<DialogManager>().SetText("Importador", new string[] { "En esta sección vamos a realizar los desafíos consernientes a como identificar al importador canadiense." });
         }
         else if (currentStage == 5)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "En esta sección se ven los elementos básicos con los que debe de contar la presentación comercial de la fruta" });
+            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "En esta sección se ven los elementos básicos con los que debe contar la presentación comercial de la fruta" });
         }
         else if (currentStage == 6)
         {
@@ -136,7 +136,7 @@ public class MapManager : MonoBehaviour
            ,"Fito: Significa: “Planta” o “vegetal”, Definición de La Real Academia Española.\n"
            ,"Fitosanitario: Es la prevención, y curación de las plantas.\n"
            ,"Certificado Fitosanitario: Documento oficial que certifica que se cumple con los requerimientos técnicos que debe cumplir el exportador que solicita la entidad sanitaria al país que se va a exportar, avalando el proceso productivo del cultivo, para este caso la Gulupa.\n\n"
-           ,"Haz click sobre la piedra color Lila" });
+           });
     }
 
     private void GetDialogScript()

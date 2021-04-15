@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class GlobeProperties : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    public TextMeshPro text;
     public SpriteRenderer image;
     public bool isRightWrong;
     public int id;
@@ -71,7 +71,7 @@ public class GlobeProperties : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        transform.localPosition = Vector2.Lerp(transform.position, new Vector2(Input.GetAxis("Mouse X") * 8, Input.GetAxis("Mouse Y")), followSpeed * Time.deltaTime);
+        transform.localPosition = Vector2.Lerp(transform.position, new Vector2(Input.GetAxis("Mouse X") * 10, Input.GetAxis("Mouse Y")), followSpeed * Time.deltaTime);
     }
     private void OnMouseUp()
     {

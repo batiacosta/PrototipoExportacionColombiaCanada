@@ -44,6 +44,7 @@ public class ImportadorManager : MonoBehaviour
     {
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
+        globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
         dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] { "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" });
     }
@@ -137,7 +138,7 @@ public class ImportadorManager : MonoBehaviour
         instrucciones.gameObject.SetActive(true);
         instrucciones.GetComponent<Instructions>().SetTexto("El importador debe contar con:\n"
             + "\n1. Business Number.\n"
-            + "\nArrastra los globos segun corresponda Falso o Verdadero.");
+            + "\nArrastra los globos según corresponda Falso o Verdadero.");
     }
     void segundaInstruccion()
     {

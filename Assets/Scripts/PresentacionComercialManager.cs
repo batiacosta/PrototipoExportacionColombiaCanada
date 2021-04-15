@@ -32,7 +32,7 @@ public class PresentacionComercialManager : MonoBehaviour
         ResetGoalValues(6);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "La gulupa debe de estar en una caja que debe de contener los datos que permitan dar una trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el registro de la planta empacadora, pues ésta debe de estar también certificada." });
+        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "La gulupa debe de estar en una caja que debe contener los datos que permitan hacer la trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el Registro de la planta empacadora certificada por el ICA" });
     }
 
     public void ResetGoalValues(int t)
@@ -46,6 +46,7 @@ public class PresentacionComercialManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         //gameManagerScript.time += 6;
         dialogPanel.gameObject.SetActive(true);
+        bubbleSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
         dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"La presentación comercial cuenta con:\n"
             + "\n1. Peso en Kg\n"

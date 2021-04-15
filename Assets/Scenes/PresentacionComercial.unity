@@ -599,12 +599,12 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[1]
-      value: "Fecha Producci\xF3n"
+      value: "Fecha \\nProducci\xF3n"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[2]
-      value: "N\xFAmero Establecimiento"
+      value: "N\xFAmero \\nEstablecimiento"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -614,12 +614,12 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[4]
-      value: "C\xF3digo del Predio"
+      value: "C\xF3digo del \\nPredio"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[5]
-      value: Registro Empacadora
+      value: Registro de la \nEmpacadora
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76a6d9056b4f33646aaaa68a66e56b6a, type: 3}

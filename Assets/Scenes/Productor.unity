@@ -631,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: badText.Array.data[1]
-      value: "Material en Descomposici\xF3n"
+      value: "Material en \\nDescomposici\xF3n"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -641,7 +641,7 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[0]
-      value: Area de Registros
+      value: Area de \nRegistros
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -651,17 +651,17 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[2]
-      value: "Area de insumos agr\xEDcolas"
+      value: "Area de insumos \\nagr\xEDcolas"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[3]
-      value: Almacen de herramientas
+      value: Almacen de \nHerramientas
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[4]
-      value: Area acopioCosecha
+      value: Area acopio \nCosecha
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -671,7 +671,7 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[6]
-      value: Kit Primeros Auxilios
+      value: Kit de \nPrimeros Auxilios
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}

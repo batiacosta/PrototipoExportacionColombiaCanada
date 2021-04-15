@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 3111556526807791352, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791352, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -228,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: badText.Array.data[0]
-      value: "Resoluci\xF3n ICA 20/2016"
+      value: "Resoluci\xF3n \\nICA 20/2016"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -238,12 +238,12 @@ PrefabInstance:
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[0]
-      value: Registro ante el ICA
+      value: Registro ante \nel ICA
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
       propertyPath: goodText.Array.data[1]
-      value: "Resoluci\xF3n ICA 448/2006"
+      value: "Resoluci\xF3n \\nICA 448/2006"
       objectReference: {fileID: 0}
     - target: {fileID: 3111556526807791355, guid: 76a6d9056b4f33646aaaa68a66e56b6a,
         type: 3}
@@ -326,7 +326,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236321885
 GameObject:
@@ -517,7 +517,7 @@ PrefabInstance:
     - target: {fileID: 972055223772925549, guid: 9921d9cf6e803964e834971d3b6e06af,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 972055223772925549, guid: 9921d9cf6e803964e834971d3b6e06af,
         type: 3}
@@ -723,7 +723,7 @@ PrefabInstance:
     - target: {fileID: 7176076620579111928, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7176076620579111928, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}

@@ -56,6 +56,8 @@ public class EnvioManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         gameManagerScript.time += 6;
         dialogPanel.gameObject.SetActive(true);
+        bubbleSpawner.gameObject.SetActive(false);
+        globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
         dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] { "El exportador requiere los siguientes datos:\n"
             , "\n1. Solicitud firmada por persona Natural o Jurídica\n"

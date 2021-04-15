@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 3911348043419444530, guid: fdbeef3dd91ac274790901e242b8fb05,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6589138398243682090, guid: fdbeef3dd91ac274790901e242b8fb05,
         type: 3}
@@ -857,6 +857,51 @@ PrefabInstance:
       propertyPath: m_text
       value: Hortalizas
       objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970341, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055222816970343, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -275
+      objectReference: {fileID: 0}
     - target: {fileID: 972055223772925538, guid: 9921d9cf6e803964e834971d3b6e06af,
         type: 3}
       propertyPath: goodImages.Array.size
@@ -966,6 +1011,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Frutas
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676065, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 972055223962676071, guid: 9921d9cf6e803964e834971d3b6e06af,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -275
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9921d9cf6e803964e834971d3b6e06af, type: 3}

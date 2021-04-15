@@ -18,11 +18,11 @@ public class GameManager : MonoBehaviour
     public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
     public int time = 0;
-    public int money = 10000;
+    public int money = 0;
     public int lives;
     public int logrados;
     public int total = 0;
-    public bool isFirstTime = false;
+    public bool isFirstTime = true;
     private string currentScene;
     public int hiddenLevel = 0;
     private TutorialManager tutorialScript;
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         HideEverything();
         SetCurrentScene();
         audioSource = GetComponent<AudioSource>();
+        isFirstTime = true;
     }
     private void Update()
     {

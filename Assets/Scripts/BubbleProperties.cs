@@ -54,7 +54,7 @@ public class BubbleProperties : MonoBehaviour
         isRightOrWrong = isR;
         image.gameObject.SetActive(false);
         text.gameObject.SetActive(true);
-        text.text = m;
+        text.text = m.Replace("\\n", "\n");
     }
     void SetScale(float scaleFactor)
     {

@@ -33,12 +33,12 @@ public class ProductorManager : MonoBehaviour
         ResetGoalValues(8);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", new string[] {"El productor debe de cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
+        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", new string[] {"El productor debe cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
             , "En este módulo se mencionan algunos de esos requisitos que irán clasificados en Documentales y de Infraestructura\n"
             ,"El productor debe cumplir en su Infraestructura con:\n"
             + "\nArea de Registros, " + "Señalización, "
-            + "Area de insumos agrícolas, " + "Almacen de herramientas, "
-            + "Area acopioCosecha\n"
+            + "Área de insumos agrícolas, " + "Almacén de herramientas, "
+            + "Área acopioCosecha\n"
             + "Plano \n"
             + "Kit Primeros Auxilios. \n\n"
             , "El productor debe cumplir en su Documentación con:\n"
@@ -61,11 +61,13 @@ public class ProductorManager : MonoBehaviour
     {
         gameManagerScript.SetHiddenLevel(0);
         dialogPanel.gameObject.SetActive(true);
+        bubbleSpawner.gameObject.SetActive(false);
+        globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
         dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"El productor debe cumplir en su Infraestructura con:\n"
             + "\nArea de Registros, " + "Señalización, "
-            + "Area de insumos agrícolas, " + "Almacen de herramientas, "
-            + "Area acopioCosecha, "+ "Plano, "
+            + "Área de insumos agrícolas, " + "Almacén de herramientas, "
+            + "Área acopioCosecha, "+ "Plano, "
             + "Kit Primeros Auxilios. \n\n"
             , "El productor debe cumplir en su Documentación con:\n"
             + "\nSolicitud firmada Persona Natural o Jurídica, \n"
@@ -169,14 +171,14 @@ public class ProductorManager : MonoBehaviour
             + "datos del predio, "
             + "contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
             + "nombre de especies cultivadas.\n"
-            + "\nArrastra los globos segun corresponda Falso o Verdadero.");
+            + "\nArrastra los globos según corresponda Falso o Verdadero.");
     }
     void segundaInstruccion()
     {
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
         instrucciones.GetComponent<Instructions>().SetTexto("¿Qué requerimientos en infraestructura debe cumplir el productor?\n"
-           + "Areas y señalizaciones, planos y Kit de primeros auxilios."
+           + "Áreas y señalizaciones, planos y Kit de primeros auxilios."
             + "\n"
             + "\nEscoge las burbujas corrrectas.");
     }
