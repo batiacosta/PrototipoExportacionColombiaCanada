@@ -15,6 +15,12 @@ public class PresentacionComercialManager : MonoBehaviour
     int counterDialog = 0;
     int instructionsCounter = 0;
     bool isBubble = false;
+
+    int fallas = 0;
+    string fallasString = "";
+    string[] titulosFeedback = new string[] { "¡Muy bien!", "Buen intento", "Ten cuidado" };
+    string tituloFeedback;
+
     void Start()
     {
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -44,11 +50,27 @@ public class PresentacionComercialManager : MonoBehaviour
     void SegundoDialogo()
     {
         gameManagerScript.SetHiddenLevel(0);
-        //gameManagerScript.time += 6;
+        gameManagerScript.time += 6;
+        gameManagerScript.compileFallasTotal();
+        if (fallas == 0)
+        {
+            tituloFeedback = titulosFeedback[0];
+            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+        }
+        else if (fallas > 0 && fallas < 4)
+        {
+            tituloFeedback = titulosFeedback[1];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
+        else if (fallas >= 4)
+        {
+            tituloFeedback = titulosFeedback[2];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"La presentación comercial cuenta con:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString, "La presentación comercial cuenta con:\n"
             + "\n1. Peso en Kg\n"
             + "2. Fecha de producción\n"
             + "3. Número del establecimiento\n"
@@ -124,6 +146,8 @@ public class PresentacionComercialManager : MonoBehaviour
     }
     public void Mal(int i)
     {
+        fallas++;
+        gameManagerScript.addFallasLocal();
         gameManagerScript.time += 1;
         if (isBubble)
         {

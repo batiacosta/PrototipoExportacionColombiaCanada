@@ -14,6 +14,12 @@ public class ImportadorManager : MonoBehaviour
     int counterDialog = 0;
     int instructionsCounter = 0;
     bool isBubble = false;
+
+    int fallas = 0;
+    string fallasString = "";
+    string[] titulosFeedback = new string[] { "¡Muy bien!", "Buen intento", "Ten cuidado" };
+    string tituloFeedback;
+
     void Start()
     {
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -43,10 +49,27 @@ public class ImportadorManager : MonoBehaviour
     void SegundoDialogo()
     {
         gameManagerScript.SetHiddenLevel(0);
+        gameManagerScript.time += 0.5f;
+        gameManagerScript.compileFallasTotal();
+        if (fallas == 0)
+        {
+            tituloFeedback = titulosFeedback[0];
+            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+        }
+        else if (fallas > 0 && fallas < 4)
+        {
+            tituloFeedback = titulosFeedback[1];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 0.5 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
+        else if (fallas >= 4)
+        {
+            tituloFeedback = titulosFeedback[2];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 0.5 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
         dialogPanel.gameObject.SetActive(true);
         globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] { "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" });
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] { fallasString, "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" });
     }
 
     public void CloseDialog()
@@ -59,7 +82,6 @@ public class ImportadorManager : MonoBehaviour
         }
         if (counterDialog == 2)
         {
-            gameManagerScript.time += 6;
             gameManagerScript.enabledLevels = 5;
             gameManagerScript.ChangeScene("Progreso");
         }
@@ -120,6 +142,8 @@ public class ImportadorManager : MonoBehaviour
     }
     public void Mal(int i)
     {
+        fallas++;
+        gameManagerScript.addFallasLocal();
         gameManagerScript.time += 1;
         if (isBubble)
         {

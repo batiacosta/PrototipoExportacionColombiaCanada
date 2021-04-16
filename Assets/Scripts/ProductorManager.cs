@@ -15,6 +15,12 @@ public class ProductorManager : MonoBehaviour
     int counterDialog = 0;
     int instructionsCounter = 0;
     bool isBubble = false;
+
+    int fallas = 0;
+    string fallasString = "";
+    string[] titulosFeedback = new string[] { "¡Muy bien!", "Buen intento", "Ten cuidado" };
+    string tituloFeedback;
+
     void Start()
     {
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -60,11 +66,28 @@ public class ProductorManager : MonoBehaviour
     void SegundoDialogo()
     {
         gameManagerScript.SetHiddenLevel(0);
+        gameManagerScript.time += 6;
+        gameManagerScript.compileFallasTotal();
+        if (fallas == 0)
+        {
+            tituloFeedback = titulosFeedback[0];
+            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+        }
+        else if (fallas > 0 && fallas < 4)
+        {
+            tituloFeedback = titulosFeedback[1];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
+        else if (fallas >= 4)
+        {
+            tituloFeedback = titulosFeedback[2];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] {"El productor debe cumplir en su Infraestructura con:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString, "El productor debe cumplir en su Infraestructura con:\n"
             + "\nArea de Registros, " + "Señalización, "
             + "Área de insumos agrícolas, " + "Almacén de herramientas, "
             + "Área acopioCosecha, "+ "Plano, "
@@ -89,7 +112,6 @@ public class ProductorManager : MonoBehaviour
         }
         if (counterDialog == 2)
         {
-            gameManagerScript.time += 6;
             gameManagerScript.ChangeScene("Progreso");
         }
     }
@@ -150,6 +172,8 @@ public class ProductorManager : MonoBehaviour
     }
     public void Mal(int i)
     {
+        fallas++;
+        gameManagerScript.addFallasLocal();
         gameManagerScript.time += 1;
         if (isBubble)
         {

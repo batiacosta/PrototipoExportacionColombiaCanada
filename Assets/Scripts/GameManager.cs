@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public AudioClip badSound;
     public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
-    public int time = 0;
+    public float time = 0;
     public int money = 0;
     public int lives;
     public int logrados;
@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public int hiddenLevel = 0;
     private TutorialManager tutorialScript;
     private MapManager mapManagerScript;
+    public int fallasTotal = 0;
+    public int fallas = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -165,7 +167,7 @@ public class GameManager : MonoBehaviour
     }
     public void Mal(int id)
     {
-        money-=1000;
+        money-=5000000;
         time++;
         audioSource.clip = badSound;
         audioSource.Play();
@@ -196,4 +198,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void resetFallasTotal()
+    {
+        fallasTotal = 0;
+        fallas = 0;
+    }
+    public void resetTimeMoney()
+    {
+        time = 0;
+        money = 0;
+        playerPosition = new Vector2(-7.52f, -2.44f);
+        enabledLevels = 2;
+        isFirstTime = true;
+        ChangeScene("Login");
+    }
+    public void resetFallasLocal()
+    {
+        fallas = 0;
+    }
+    public void addFallasLocal()
+    {
+        fallas++;
+    }
+    public void compileFallasTotal()
+    {
+        fallasTotal += fallas;
+        resetFallasLocal();
+    }
 }

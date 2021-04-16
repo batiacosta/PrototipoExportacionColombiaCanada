@@ -25,8 +25,8 @@ public class MapManager : MonoBehaviour
         gameManagerScript = gameManager.GetComponent<GameManager>();
         if (gameManagerScript.isFirstTime)
         {
-            gameManagerScript.UpdateMoneyValue(3000000);
-            gameManagerScript.UpdateTimeValue(1);
+            gameManagerScript.UpdateMoneyValue(30000000);
+            gameManagerScript.UpdateTimeValue(0);
             gameManagerScript.isFirstTime = false;
         }
         gameManagerScript.SetHiddenLevel(3);

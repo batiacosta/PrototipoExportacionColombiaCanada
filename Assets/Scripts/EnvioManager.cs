@@ -15,6 +15,11 @@ public class EnvioManager : MonoBehaviour
     int counterDialog = 0;
     int instructionsCounter = 0;
     bool isBubble = false;
+
+    int fallas = 0;
+    string fallasString = "";
+    string[] titulosFeedback = new string[] { "¡Muy bien!", "Buen intento", "Ten cuidado" };
+    string tituloFeedback;
     void Start()
     {
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -54,12 +59,28 @@ public class EnvioManager : MonoBehaviour
     void SegundoDialogo()
     {
         gameManagerScript.SetHiddenLevel(0);
-        gameManagerScript.time += 6;
+        gameManagerScript.time += 1;
+        gameManagerScript.compileFallasTotal();
+        if (fallas == 0)
+        {
+            tituloFeedback = titulosFeedback[0];
+            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+        }
+        else if (fallas > 0 && fallas < 4)
+        {
+            tituloFeedback = titulosFeedback[1];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 1 mese, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
+        else if (fallas >= 4)
+        {
+            tituloFeedback = titulosFeedback[2];
+            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 1 mese, y una pérdida de $" + (fallas * 5000000).ToString();
+        }
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("¡Muy bien!", new string[] { "El exportador requiere los siguientes datos:\n"
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] { fallasString, "El exportador requiere los siguientes datos:\n"
             , "\n1. Solicitud firmada por persona Natural o Jurídica\n"
             , "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             , "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
@@ -96,6 +117,7 @@ public class EnvioManager : MonoBehaviour
             isBubble = false;
             bubbleSpawner.gameObject.SetActive(false);
             globeSpawner.gameObject.SetActive(true);
+            ResetGoalValues(5);
             segundaInstruccion();
         }
         else if (instructionsCounter == 3)
@@ -128,6 +150,8 @@ public class EnvioManager : MonoBehaviour
     }
     public void Mal(int i)
     {
+        fallas++;
+        gameManagerScript.addFallasLocal();
         gameManagerScript.time += 1;
         if (isBubble)
         {
