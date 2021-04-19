@@ -42,4 +42,8 @@ public class Login : MonoBehaviour
         acercaDe.gameObject.SetActive(false);
         acercaDeB.gameObject.SetActive(true);
     }
+    public void goToLinkacercaDe()
+    {
+        Application.OpenURL("https://drive.google.com/file/d/1WtHGcH8bxtk4I7iWwD2Jd1PmJbCFMySp/view?usp=sharing");
+    }
 }
