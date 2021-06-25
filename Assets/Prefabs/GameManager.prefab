@@ -410,6 +410,8 @@ MonoBehaviour:
   total: 0
   isFirstTime: 0
   hiddenLevel: 0
+  fallasTotal: 0
+  fallas: 0
 --- !u!114 &1662711444127932274
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1271,6 +1271,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2375998562920720091, guid: daff4d4252749154786b9bcf65444b47,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -5.2206573
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375998562920720091, guid: daff4d4252749154786b9bcf65444b47,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 2.1881711
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375998562920720092, guid: daff4d4252749154786b9bcf65444b47,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1037.2831
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375998562920720092, guid: daff4d4252749154786b9bcf65444b47,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 39.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2375998562986252661, guid: daff4d4252749154786b9bcf65444b47,
         type: 3}
       propertyPath: m_AnchoredPosition.y
