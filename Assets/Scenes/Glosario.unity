@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1882,6 +1882,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 143055050115400889, guid: 4f6735421bca48c46b38c94820bee24a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00012207031
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693665133615949481, guid: 4f6735421bca48c46b38c94820bee24a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.2258301
+      objectReference: {fileID: 0}
     - target: {fileID: 4859302293882503401, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
       propertyPath: m_IsActive
@@ -1891,6 +1901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 29.630127
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859302294251315019, guid: 4f6735421bca48c46b38c94820bee24a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.4211426
       objectReference: {fileID: 0}
     - target: {fileID: 4859302294317900002, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
@@ -1905,12 +1920,22 @@ PrefabInstance:
     - target: {fileID: 4859302294663404077, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.299988
+      value: 48.299927
       objectReference: {fileID: 0}
     - target: {fileID: 4859302294663404077, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923814857341701329, guid: 4f6735421bca48c46b38c94820bee24a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -29.839966
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923814857341701329, guid: 4f6735421bca48c46b38c94820bee24a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -181.39996
       objectReference: {fileID: 0}
     - target: {fileID: 7176076620579111928, guid: 4f6735421bca48c46b38c94820bee24a,
         type: 3}
@@ -2048,6 +2073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3e72bb0551542a9a4b015db4f7d9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glossaryGamePanel: {fileID: 2006779278}
+  glossaryPanel: {fileID: 1510154880}
+  dialogPanel2: {fileID: 1322140693}
 --- !u!1 &1392771700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,7 +2171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1510154881
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2967,7 +2995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2006779279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2998,12 +3026,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006779278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0bb9f683e0cb4677a5ee7a55096f401, type: 3}
+  m_Script: {fileID: 11500000, guid: 699fe331e9055f14d892f32d5f68be2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fondoPanel:
-    serializedVersion: 2
-    rgba: 0
+  textoBotones: []
 --- !u!114 &2006779281
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GlosarioManager : MonoBehaviour
 {
+    public GameObject glossaryGamePanel;
+    public GameObject glossaryPanel;
+    public GameObject dialogPanel2;
     // Start is called before the first frame update
     void Start()
     {
