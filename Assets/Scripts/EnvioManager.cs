@@ -47,7 +47,9 @@ public class EnvioManager : MonoBehaviour
             + "4. Nombre de las especies a exportar\n"
             , "El transporte de la Gulupa hacia Canadá debe de realizarse ÚNICAMENTE por vía aérea",
             "El proceso del envío de no cumplir los requisitos implicará la pérdida de la mercancía, de modo que perderás dinero y tiempo mientras se realizan nuevamente los trámites y certificados que correspondan"
-        });
+        },
+            new string[] { "titulo1", "titulo2" }
+        );
     }
 
     public void ResetGoalValues(int t)
@@ -85,7 +87,9 @@ public class EnvioManager : MonoBehaviour
             , "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             , "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
             , "4. Nombre de las especies a exportar\n"
-            , "\nAcabas de activar un nuevo módulo" });
+            , "\nAcabas de activar un nuevo módulo" },
+            new string[] { "titulo1", "titulo2" }
+        );
     }
 
     public void CloseDialog()

@@ -20,7 +20,11 @@ public class TutorialManager : MonoBehaviour
         GetComponent<Force>().SetForce(3);
         GetComponent<FallingSpeed>().SetFallingSpeed(4);
         instructionsPanel.gameObject.SetActive(true);
-        instructionsPanel.GetComponent<Instructions>().SetTexto("En este tutorial deberás hacer click sobre las burbujas correctas y tu progreso se ve reflejado en la parte superior.");
+        instructionsPanel.GetComponent<Instructions>().SetTexto(
+            "Selecciona las burbujas correctas\n\n"
+            +"\"click con el mouse\"\n"
+            +"\"Tocando la pantalla táctil\""
+            );
         malDialog.gameObject.SetActive(false);
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManagerScript.SetHiddenLevel(1);
@@ -31,7 +35,7 @@ public class TutorialManager : MonoBehaviour
     private void FirstMission()
     {
         instructionsPanel.gameObject.SetActive(true);
-        instructionsPanel.GetComponent<Instructions>().SetTexto("Selecciona unicamente las burbujas con Frutas.");
+        instructionsPanel.GetComponent<Instructions>().SetTexto("Selecciona únicamente las burbujas con Frutas.");
         globeSpawner.gameObject.SetActive(false);
     }
     public void ResetGoalValues(int t)
@@ -81,7 +85,10 @@ public class TutorialManager : MonoBehaviour
     public void Mal(int id)
     {
         malDialog.gameObject.SetActive(true);
-        malDialog.GetComponent<MalDialogManager>().SetTextContent("Tu dinero se reducirá porque cada error representa un sobrecosto en dinero y tiempo por cada trámite que falles");
+        malDialog.GetComponent<MalDialogManager>().SetTextContent(
+            "Cada fallo es un sobre costo y tiempo de demora\n"
+            + "tu dinero se ve reducido en la esquina superior derecha con cada error que cometas"
+            );
     }
     public void Bien()
     {
@@ -90,7 +97,10 @@ public class TutorialManager : MonoBehaviour
         {
 
                 instructionsPanel.gameObject.SetActive(true);
-                instructionsPanel.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                instructionsPanel.GetComponent<Instructions>().SetTexto(
+                    "¡Muy bien!\n"
+                    +"Tu progreso se va viendo en \"Conseguiste 3/3\""
+                    );
                 logrados = 0;  
         }
     }

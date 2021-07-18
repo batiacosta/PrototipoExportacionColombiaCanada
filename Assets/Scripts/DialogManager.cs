@@ -8,79 +8,42 @@ public class DialogManager : MonoBehaviour
     public TextMeshProUGUI title;
     public TextMeshProUGUI texto;
     public GameObject cancelar;
-    public GameObject rightButton;
-    public GameObject leftButton;
+    public GameObject[] pestanas;
     private string[] textoCompleto;
+    private string[] nombrePestanasCompleto;
+    private int pestanasDisponibles = 0;
     int size = 0;
     int current;
     private void Update()
     {
-        if (size == 1)
-        {
-            rightButton.gameObject.SetActive(false);
-            leftButton.gameObject.SetActive(false);
-        }else if (current == size - 1)
-        {
-            rightButton.gameObject.SetActive(false);
-            leftButton.gameObject.SetActive(true);
-        }
-        else if(current == 0)
-        {
-            rightButton.gameObject.SetActive(true);
-            leftButton.gameObject.SetActive(false);
-        }else
-        {
-            rightButton.gameObject.SetActive(true);
-            leftButton.gameObject.SetActive(true);
-        }
     }
 
-    public void SetText (string t, string[] c)
+    public void SetText (string t, string[] c, string[] nombrePestanas) 
     {
+        //  Recibe textos y título
         title.text = t;
-        texto.text = c[0];
         textoCompleto = c;
+        nombrePestanasCompleto = nombrePestanas;
+        //  Define y muestra el texto actual
         current = 0;
+        mostrarTexto();
         size = textoCompleto.Length;
+        SetPestanas(size);
     }
-    void SetButtons()
+
+    public void SetPestanas(int c)
     {
-        if(size == 1)
+        //  Define cuantas pestañas van a estar disponibles
+
+        HidePestanas();
+        for(int i=0; i < c; i++)
         {
-            leftButton.gameObject.SetActive(false);
-            rightButton.gameObject.SetActive(false);
-        }else
-        {
-            leftButton.gameObject.SetActive(false);
-            rightButton.gameObject.SetActive(true);
+            pestanas[i].gameObject.SetActive(true);
         }
+        //  Define como activa la primera pestana
+        ElegirPestana(0);
     }
-    public void Siguiente()
-    {
-        current++;
-        if(current == (size - 1))
-        {
-            rightButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            rightButton.gameObject.SetActive(true);
-        }
-        texto.text = textoCompleto[current];
-    }
-    public void Anterior()
-    {
-        current--;
-        if (current == 0)
-        {
-            leftButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            leftButton.gameObject.SetActive(true);
-        }
-        texto.text = textoCompleto[current];
-    }
+
     public void HiceDancelar()
     {
         cancelar.gameObject.SetActive(false);
@@ -88,6 +51,31 @@ public class DialogManager : MonoBehaviour
     public void ShowCancel()
     {
         cancelar.gameObject.SetActive(true);
-    } 
+    }
+    void HidePestanas()
+    {
+        foreach(GameObject p in pestanas)
+        {
+            p.gameObject.SetActive(false);
+        }
+    }
+
+    public void ElegirPestana(int currentPestana)
+    {
+        //  Oscurece las pestanas disponibles no activas
+        for (int i = 0; i < size; i++)
+        {
+            pestanas[i].GetComponent<PestanaProps>().SetColor(false);
+            pestanas[i].GetComponent<PestanaProps>().SetNombre(nombrePestanasCompleto[i]);
+        }
+        //  Aclara el color de la pestana activa
+        pestanas[currentPestana].GetComponent<PestanaProps>().SetColor(true);
+        current = currentPestana;
+        mostrarTexto();
+    }
+    void mostrarTexto()
+    {
+        texto.text = textoCompleto[current];
+    }
     
 }

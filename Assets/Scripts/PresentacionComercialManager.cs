@@ -38,7 +38,9 @@ public class PresentacionComercialManager : MonoBehaviour
         ResetGoalValues(6);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "La gulupa debe de estar en una caja de cartón y en bolsa plástica, que debe contener los datos que permitan hacer la trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el Registro de la planta empacadora certificada por el ICA" });
+        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "La gulupa debe de estar en una caja de cartón y en bolsa plástica, que debe contener los datos que permitan hacer la trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el Registro de la planta empacadora certificada por el ICA" },
+            new string[] { "titulo1", "titulo2" }
+        );
     }
 
     public void ResetGoalValues(int t)
@@ -77,7 +79,9 @@ public class PresentacionComercialManager : MonoBehaviour
             + "4. Fecha de Caducidad\n"
             + "5. Código del predio\n"
             + "6. Registro Empacadora"
-            , "\nAcabas de activar un nuevo módulo" });
+            , "\nAcabas de activar un nuevo módulo" },
+            new string[] { "titulo1", "titulo2" }
+        );
     }
 
     public void CerrarImagen()

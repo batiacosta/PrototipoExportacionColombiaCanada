@@ -54,7 +54,9 @@ public class ProductorManager : MonoBehaviour
             + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional\n "
             + "Nombre de especies cultivadas\n"
             + "Datos Empresa."
-            , "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." });
+            , "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." },
+            new string[] { "titulo1", "titulo2" }
+        );
     }
 
     public void ResetGoalValues(int t)
@@ -99,7 +101,9 @@ public class ProductorManager : MonoBehaviour
             + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
             + "Nombre de especies cultivadas, "
             + "Datos Empresa.\n\n"
-            , "\n¡Acabas de activar un nuevo Módulo!" });
+            , "\n¡Acabas de activar un nuevo Módulo!" },
+            new string[] { "titulo1", "titulo2"}
+        );
     }
 
     public void CloseDialog()

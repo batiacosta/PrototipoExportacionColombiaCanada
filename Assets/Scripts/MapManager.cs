@@ -77,27 +77,37 @@ public class MapManager : MonoBehaviour
         {
             playerDialog.gameObject.SetActive(true);
             playerDialog.GetComponent<DialogManager>().SetText("Exportador",
-                new string [] { "En esta sección vamos a realizar los desafíos de los requisitos mínimos para las certificaciones de los fitosanitarios que debe cumplir el exportador."});
+                new string [] { "El exportador debe de cumplir con una serie de certificaciones ante el Instituto Colombiano Agropecuario (ICA) que le permiten unas garantías legales para exportar. Las fallas en el proceso de certificación puede generar retrasos de hasta un año, sin contar con las pérdidas que implican no vender su producto en el exterior." },
+            new string[] { "Descripción" }
+        );
         }else if (currentStage == 3)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Productor", new string[] {"En esta sección vamos a realizar los desafíos consernientes a los requisitos mínimos con los que debe contar el Productor, quien siembra la Gulupa en este caso.\n\n"
-                ,"La inocuidad de los alimentos puede definirse como el conjunto de condiciones y medidas necesarias durante la producción, almacenamiento, distribución y preparación de alimentos para asegurar que una vez ingeridos, no representen un riesgo para la salud." });
+            playerDialog.GetComponent<DialogManager>().SetText("Productor", new string[] {"El exportador debe de seleccionar a un productor certificado que le provea de la gulupa que ofrecerá al Canadá. Este nivel presenta los requisitos mínimos con los que debe contar el productor para ser escogido por el exportador."
+                ,"Inocuidad: La inocuidad de los alimentos puede definirse como el conjunto de condiciones y medidas necesarias durante la producción, almacenamiento, distribución y preparación de alimentos para asegurar que una vez ingeridos, no representen un riesgo para la salud." },
+            new string[] { "Descripción", "Glosario" }
+        );
         }
         else if (currentStage == 4)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Importador", new string[] { "En esta sección vamos a realizar los desafíos consernientes a como identificar al importador canadiense." });
+            playerDialog.GetComponent<DialogManager>().SetText("Importador", new string[] { "El exportador debe de contactar con una empresa importadora canadiense que compre su producto. En este nivel se ven las características que debe de tener este importador." },
+            new string[] { "Descripción"}
+        );
         }
         else if (currentStage == 5)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "En esta sección se ven los elementos básicos con los que debe contar la presentación comercial de la fruta" });
+            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "Una presentación comercial que no permita realizar una trazabilidad del producto puede ser rechazada para su distribución en Canadá, lo que implica la pérdida del cargamento. Este nivel muestra los elementos con los que debe de contar la presentación comercial de la Gulupa." },
+            new string[] { "Descripción" }
+        );
         }
         else if (currentStage == 6)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Envío", new string[] { "¿Qué requisitos y documentos se deben de tener a la mano en el momento del envío" });
+            playerDialog.GetComponent<DialogManager>().SetText("Envío", new string[] { "La gulupa al ser un producto fresco, requiere de unas condiciones para ser transportada. Descuidar las condiciones de envío puede verse reflejado en la pérdida del cargamento, o sobrecostos." },
+            new string[] { "Descripción" }
+        );
         }
         else if (currentStage == 7)
         {
@@ -130,13 +140,16 @@ public class MapManager : MonoBehaviour
         dialogPanel.gameObject.SetActive(true);
         GetDialogScript();
         dialogoScript.HiceDancelar();
-        dialogoScript.SetText("Requerimientos Fitosanitarios para exportación de Gulupa de Colombia a Canadá",
+        dialogoScript.SetText("Requerimientos Fitosanitarios \npara exportación de Gulupa desde \nColombia a Canadá",
 
-            new string[] {"Este juego es una herramienta complementaria para entrenamiento de las condiciones fitosanitarias del sector agrícola de Colombia a Canadá.Caso de estudio: Requerimientos fitosanitarios para la exportación de la Gulupa.\n\n "
-           ,"Fito: Significa: “Planta” o “vegetal”, Definición de La Real Academia Española.\n"
-           ,"Fitosanitario: Es la prevención, y curación de las plantas.\n"
-           ,"Certificado Fitosanitario: Documento oficial que certifica que se cumple con los requerimientos técnicos que debe cumplir el exportador que solicita la entidad sanitaria al país que se va a exportar, avalando el proceso productivo del cultivo, para este caso la Gulupa.\n\n"
-           });
+            new string[] {
+           "El proceso de exportación de la Gulupa debe superar varios desafíos, entre ellos, las barreras no arancelarias como las fitosanitarias. En este juego, encuentras elementos para identificar los conceptos relacionados a la certificación fitosanitaria, producción, envío y embalaje."
+           ,"Fito: Significa: “Planta” o “vegetal”, Definición de La Real Academia Española.\n\n"
+           + "Fitosanitario: Es la prevención, y curación de las plantas.\n\n"
+           + "Certificado Fitosanitario: Documento oficial que certifica que se cumple con los requerimientos técnicos que debe cumplir el exportador solicitante a la entidad sanitari, avalando el proceso productivo del cultivo, para este caso la Gulupa."
+           },
+            new string[] { "Descripción", "Glosario" }
+        );
     }
 
     private void GetDialogScript()

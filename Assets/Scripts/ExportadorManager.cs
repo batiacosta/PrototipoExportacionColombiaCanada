@@ -38,12 +38,14 @@ void Start()
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
         dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", new string[] {"El exportador es generalmente el empresario que contacta a un productor certificado en Colombia y a un importador canadiense certificado a quien le vende el producto.\n"
-            , "Debe tener el registro ICA como exportador y cumplir con la resolución ICA 448/2006.\n"
-            , "Solicitud firmada por persona Natural o Jurídica\n"
-            , "Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            , "Datos del Representante Legal: Nombre, Datos de contacto\n"
-            , "Nombre de la especie a exportar (Gulupa)\n"
-            , "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." });
+            + "Debe tener el registro ICA como exportador y cumplir con la resolución ICA 448/2006.\n"
+            + "Solicitud firmada por persona Natural o Jurídica\n"
+            + "Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
+            + "Datos del Representante Legal: Nombre, Datos de contacto\n"
+            + "Nombre de la especie a exportar (Gulupa)\n"
+            , "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." },
+            new string[] { "Requisitos", "Penalidades" }
+        );
     }
 
     public void ResetGoalValues(int t)
@@ -81,8 +83,10 @@ void Start()
             + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
             + "4. Nombre de la especie a exportar (Gulupa)\n"
-            , "Es muy importante saber que debe de contar con un registro ICA como exportador y la resolución ICA 448/2006\n"
-            , "\nAcabas de activar un nuevo módulo" });
+            + "Es muy importante saber que debe de contar con un registro ICA como exportador y la resolución ICA 448/2006\n"
+            },
+            new string[] { "Descripción" }
+        );
     }
 
     public void CloseDialog()
@@ -174,6 +178,6 @@ void Start()
             + "2. Datos de la Empresa\n"
             + "3. Datos del Representante Legal\n"
             + "4. La especie de fruta a exportar\n" 
-            + "\nEscoge las burbujas corrrectas.");
+            + "\nClasifica las cajas a la Derecha o Izquierda según corresponda.");
     }
 }
