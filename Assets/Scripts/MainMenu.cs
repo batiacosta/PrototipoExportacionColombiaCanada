@@ -23,6 +23,6 @@ public class MainMenu : MonoBehaviour
 
     public void GoToMap()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Progreso");
+        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Glosario");
     }
 }

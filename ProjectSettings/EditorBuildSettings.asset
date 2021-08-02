@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: cb75ef379604d1d4c9afc54a2c100138
   - enabled: 1
+    path: Assets/Scenes/Glosario.unity
+    guid: 48ce30cb5961349ab84c3d2176965737
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: e14025f84a82a4f4b9ba168cc47cfb3a
   - enabled: 1

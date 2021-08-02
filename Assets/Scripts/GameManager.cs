@@ -6,9 +6,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    //public GameObject dialogPanel;
-    //public GameObject finalScreen;
-    //public GameObject malBox;
     public TextMeshProUGUI moneyT;
     public TextMeshProUGUI timeT;
     public TextMeshProUGUI remainT;
@@ -18,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
     public float time = 0;
+    public int[] bonus = { 0, 0, 0 };
     public int money = 0;
     public int lives;
     public int logrados;
@@ -36,11 +34,15 @@ public class GameManager : MonoBehaviour
         SetCurrentScene();
         audioSource = GetComponent<AudioSource>();
         isFirstTime = true;
+        ResetBonusCopas();
     }
     private void Update()
     {
         UpdateVisualValues();
         //CompareResult();
+    }
+    public void AgregarCopa() {
+        //  Agrega una copa a la UI
     }
     private void CompareResult()
     {
@@ -224,5 +226,18 @@ public class GameManager : MonoBehaviour
     {
         fallasTotal += fallas;
         resetFallasLocal();
+    }
+    public void SetCopas(int i) {
+        //  Mostrar en el UI i copas
+    }
+    public void SetCopaBonusLevel(int i)
+    {
+
+    }
+
+    private void ResetBonusCopas()
+    {
+
+        //  Quitr las copas del UI
     }
 }
