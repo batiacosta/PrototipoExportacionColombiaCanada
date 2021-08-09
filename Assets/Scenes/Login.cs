@@ -8,6 +8,10 @@ public class Login : MonoBehaviour
     public GameObject gameManagerPrefab;
     public GameObject acercaDe;
     public GameObject acercaDeB;
+    public GameObject acercaDeP;
+    public GameObject autoresP;
+    public GameObject agradecimientosP;
+    public GameObject linksP;
     void Start()
     {
         acercaDe.gameObject.SetActive(false);
@@ -20,6 +24,7 @@ public class Login : MonoBehaviour
         else { 
         
         }
+        openAcercaDePanel();
     }
 
     // Update is called once per frame
@@ -29,7 +34,8 @@ public class Login : MonoBehaviour
     }
     public void GotoTutorialScene()
     {
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("MainMenu");
+        //GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("MainMenu");
+        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Progreso");
     }
 
     public void openAcercade()
@@ -41,6 +47,35 @@ public class Login : MonoBehaviour
     {
         acercaDe.gameObject.SetActive(false);
         acercaDeB.gameObject.SetActive(true);
+    }
+
+    public void openAcercaDePanel()
+    {
+        resetSubPanels();
+        acercaDeP.gameObject.SetActive(true);
+    }
+    public void openAutoresDePanel()
+    {
+        resetSubPanels();
+        autoresP.gameObject.SetActive(true);
+    }
+    public void openAgradecimientosDePanel()
+    {
+        resetSubPanels();
+        agradecimientosP.gameObject.SetActive(true);
+    }
+    public void openLinksDePanel()
+    {
+        resetSubPanels();
+        linksP.gameObject.SetActive(true);
+    }
+
+    public void resetSubPanels()
+    {
+        acercaDeP.gameObject.SetActive(false);
+        autoresP.gameObject.SetActive(false);
+        agradecimientosP.gameObject.SetActive(false);
+        linksP.gameObject.SetActive(false);
     }
     public void goToLinkacercaDe()
     {

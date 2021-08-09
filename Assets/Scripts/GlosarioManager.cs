@@ -35,6 +35,7 @@ public class GlosarioManager : MonoBehaviour
     {
         //  Abrir Panel para escoger entre Glosario y Omitir
         primerPanel.gameObject.SetActive(true);
+        GameObject.Find("GameManager").GetComponent<GameManager>().hideMeses();
     }
     public void EmpezarGlosario() {
         ocultarPanelPrimero();
@@ -78,6 +79,7 @@ public class GlosarioManager : MonoBehaviour
     public void Bien()
     {
         //  Reproducir sonido de correcto
+        GameObject.Find("GameManager").GetComponent<GameManager>().SonarBien();
         bienConteo++;
         if (currentTerm==0) {
             if (currentChallenge == 1) {

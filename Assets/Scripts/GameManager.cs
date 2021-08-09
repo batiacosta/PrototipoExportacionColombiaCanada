@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip bienSound;
     public AudioClip badSound;
+    public GameObject copasContainer;
+    public GameObject mesesContainer;
+    public GameObject[] copasUI;
     public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
     public float time = 0;
-    public int[] bonus = { 0, 0, 0 };
+    public int[] bonus = { 0, 0, 0, 0, 0 };
     public int money = 0;
     public int lives;
     public int logrados;
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     private MapManager mapManagerScript;
     public int fallasTotal = 0;
     public int fallas = 0;
+    int copasActivas = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +40,32 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isFirstTime = true;
         ResetBonusCopas();
+        //hideMeses();
+        resetCopasUI();
     }
     private void Update()
     {
         UpdateVisualValues();
         //CompareResult();
     }
+
+    public void showMeses() {
+        mesesContainer.gameObject.SetActive(true);
+    }
+    public void hideMeses()
+    {
+        mesesContainer.gameObject.SetActive(false);
+    }
     public void AgregarCopa() {
         //  Agrega una copa a la UI
+        copasActivas++;
+        copasUI[copasActivas - 1].gameObject.SetActive(true);
+    }
+    public void resetCopasUI() {
+        foreach(GameObject c in copasUI)
+        {
+            c.gameObject.SetActive(false);
+        }
     }
     private void CompareResult()
     {
@@ -132,6 +155,7 @@ public class GameManager : MonoBehaviour
     public void UpdateTimeValue(int t)
     {
         time = t;
+        
     }
     public void UpdateLives(int l)
     {
@@ -167,10 +191,16 @@ public class GameManager : MonoBehaviour
             GameObject.Find("LevelManager").GetComponent<EnvioManager>().Bien();
         }
     }
+    public void SonarBien()
+    {
+        audioSource.clip = bienSound;
+        audioSource.Play();
+    }
     public void Mal(int id)
     {
         money-=5000000;
         time++;
+        mesesContainer.GetComponent<SliderManager>().addingValue();
         audioSource.clip = badSound;
         audioSource.Play();
         currentScene = SceneManager.GetActiveScene().name;
@@ -208,6 +238,7 @@ public class GameManager : MonoBehaviour
     public void resetTimeMoney()
     {
         time = 0;
+        mesesContainer.GetComponent<SliderManager>().resetSliderValue();
         money = 0;
         playerPosition = new Vector2(-7.52f, -2.44f);
         enabledLevels = 2;
@@ -227,8 +258,9 @@ public class GameManager : MonoBehaviour
         fallasTotal += fallas;
         resetFallasLocal();
     }
-    public void SetCopas(int i) {
+    public void SetCopas() {
         //  Mostrar en el UI i copas
+        
     }
     public void SetCopaBonusLevel(int i)
     {

@@ -27,10 +27,25 @@ public class LevelTarget : MonoBehaviour
         {
             playerScript.current = statusNumber;
             playerScript.SetNewTargetPosition(transform.position, statusNumber);
+            this.GetComponent<Animator>().SetBool("IsEnabled", true);
         }
         else
         {
-            //Play sound of Unabled field
+            this.GetComponent<Animator>().SetBool("IsEnabled", false);
+        }
+    }
+    public void setEnable(bool isIt) {
+        isEnabled = isIt;
+    }
+    public void NuevoLevelAnim(bool isIt)
+    {
+        if (isIt)
+        {
+            this.GetComponent<Animator>().SetBool("IsEnabled", true);
+        }
+        else
+        {
+            this.GetComponent<Animator>().SetBool("IsEnabled", false);
         }
     }
 }

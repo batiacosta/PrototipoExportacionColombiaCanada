@@ -23,6 +23,7 @@ public class MapManager : MonoBehaviour
         playerDialog.gameObject.SetActive(false);
         gameManager = GameObject.Find("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        gameManagerScript.showMeses();
         if (gameManagerScript.isFirstTime)
         {
             gameManagerScript.UpdateMoneyValue(30000000);
@@ -42,6 +43,7 @@ public class MapManager : MonoBehaviour
         string sceneName;
         Debug.Log(currentStage);
         playerDialog.gameObject.SetActive(false);
+        //gameManagerScript.hideMeses();
         if (currentStage == 2)
         {
             
@@ -163,8 +165,10 @@ public class MapManager : MonoBehaviour
         for(int i = 0; i < newStatus - 1; i++)
         {
             stages[i].GetComponent<SpriteRenderer>().sprite = status[2];//pasado
+            stages[i].GetComponent<LevelTarget>().NuevoLevelAnim(false);
         }
         stages[newStatus - 1].GetComponent<SpriteRenderer>().sprite = status[1];//nuevo
+        stages[newStatus - 1].GetComponent<LevelTarget>().NuevoLevelAnim(true) ;
         // Activar particulas aqui \\
         SetEnabledTargets(newStatus);
     }
@@ -173,7 +177,7 @@ public class MapManager : MonoBehaviour
     {
         for(int i=0; i<newStatus; i ++)
         {
-            stages[i].GetComponent<LevelTarget>().isEnabled = true;
+            stages[i].GetComponent<LevelTarget>().setEnable(true);
         }
     }
     void ResetProgressStatusVisuals()
@@ -181,7 +185,7 @@ public class MapManager : MonoBehaviour
         foreach(GameObject stage in stages)
         {
             stage.GetComponent<SpriteRenderer>().sprite = status[0];//Pendiente
-            stage.GetComponent<LevelTarget>().isEnabled = false;
+            stage.GetComponent<LevelTarget>().setEnable(false);
         }
     }
     public void Volver()
