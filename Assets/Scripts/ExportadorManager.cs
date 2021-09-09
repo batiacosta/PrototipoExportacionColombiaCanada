@@ -37,14 +37,11 @@ void Start()
         ResetGoalValues(2);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", new string[] {"El exportador es generalmente el empresario que contacta a un productor certificado en Colombia y a un importador canadiense certificado a quien le vende el producto.\n"
-            + "Debe tener el registro ICA como exportador y cumplir con la resolución ICA 448/2006.\n"
-            + "Solicitud firmada por persona Natural o Jurídica\n"
-            + "Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "Nombre de la especie a exportar (Gulupa)\n"
-            , "\nLos procesos de certificación tienen una duración dada en meses, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." },
-            new string[] { "Requisitos", "Penalidades" }
+        dialogPanel.GetComponent<DialogManager>().SetText("Comencemos", new string[] {"El exportador es el comerciante que contacta al productor colombiano y al importador canadiense."
+            , "Debe tener registro ICA como exportador y cumplir con la resolución  448/2016."
+            , "La solicitud está firmada por una persona Natural o Jurídica."
+            , "Los datos de la empresa son: NIT, Razón social, Dirección, Teléfono, E-mail"
+           }
         );
     }
 
@@ -62,45 +59,52 @@ void Start()
         if (fallas == 0)
         {
             tituloFeedback = titulosFeedback[0];
-            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+            fallasString = "Tuviste 8 aciertos.\n" + "Hiciste un excelente trabajo, claramente identificas los conceptos mostrados.";
         }
         else if(fallas > 0 && fallas < 4)
         {
             tituloFeedback = titulosFeedback[1];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 2 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 8 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                +"Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 2 meses.\n\n"
+                +"El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
         else if (fallas >= 4)
         {
             tituloFeedback = titulosFeedback[2];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 2 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 8 aciertos.\n"+"Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 2 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString, "El exportador requiere los siguientes datos:\n"
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de la especie a exportar (Gulupa)\n"
-            + "Es muy importante saber que debe de contar con un registro ICA como exportador y la resolución ICA 448/2006\n"
-            },
-            new string[] { "Descripción" }
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString,
+            }
         );
     }
 
     public void CloseDialog()
     {
-        counterDialog++;
-        dialogPanel.gameObject.SetActive(false);
-        if (counterDialog == 1)
-        {
-            PrimeraInstruccion();
-        }
-        if (counterDialog == 2)
-        {
-            gameManagerScript.ChangeScene("Progreso");
-        }
+
+            if (dialogPanel.GetComponent<DialogManager>().acabo == true)
+            {
+                counterDialog++;
+                dialogPanel.gameObject.SetActive(false);
+                if (counterDialog == 1)
+                {
+                    PrimeraInstruccion();
+                }
+                else if (counterDialog == 2)
+                {
+                    gameManagerScript.ChangeScene("Progreso");
+                }
+            }
+            else
+            {
+                dialogPanel.GetComponent<DialogManager>().Siguiente();
+            }
+           
     }
 
     public void CloseInstructions()
@@ -136,7 +140,7 @@ void Start()
             if (isBubble)
             {
                 instrucciones.gameObject.SetActive(true);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Vamos por el siguiente reto!");
             }
             else
             {
@@ -160,14 +164,14 @@ void Start()
         else
         {
             malDialog.gameObject.SetActive(true);
-            malDialog.GetComponent<MalDialogManager>().SetTextContent("Fallaste");
+            malDialog.GetComponent<MalDialogManager>().SetTextContent("Fallaste, recuerda los requisitos documentales del Exportador.");
         }
     }
     void PrimeraInstruccion()
     {
         isBubble = true;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere de un registro y una resolución ICA"+"\nEscoge las burbujas corrrectas.");
+        instrucciones.GetComponent<Instructions>().SetTexto("El exportador requiere de un registro y una resolución ICA"+"\nEscoge las burbujas correctas.");
     }
     void segundaInstruccion()
     {

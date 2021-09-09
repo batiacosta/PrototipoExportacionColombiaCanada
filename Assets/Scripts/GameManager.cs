@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject copasContainer;
     public GameObject mesesContainer;
     public GameObject[] copasUI;
+    public GameObject pausePanel;
+    public GameObject seguroPause;
     public Vector2 playerPosition = new Vector2(-7.52f, -2.44f);
     public int enabledLevels = 2;
     public float time = 0;
@@ -40,13 +42,54 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isFirstTime = true;
         ResetBonusCopas();
-        //hideMeses();
+        hideMeses();
         resetCopasUI();
     }
     private void Update()
     {
         UpdateVisualValues();
         //CompareResult();
+    }
+    public void PauseIt()
+    {
+        pausePanel.gameObject.SetActive(true);
+    }
+    public void PausaRegresar()
+    {
+        //  Open confirmation panel
+        pausePanel.gameObject.SetActive(false);
+        seguroPause.gameObject.SetActive(true);
+    }
+    public void PauseContinuar()
+    {
+        //  Close Pause panel
+        pausePanel.gameObject.SetActive(false);
+    }
+    public void PauseAceptar()
+    {
+        //  Check current scente
+        var nombreScene = SceneManager.GetActiveScene().name;
+        if(nombreScene == "Glosario")
+        {
+            GameObject.Find("LevelManager").GetComponent<GlosarioManager>().resetValues();
+            ChangeScene("Login");
+        }
+        if (nombreScene == "Progreso")
+        {
+            ChangeScene("Login");
+            copasActivas = 0;
+        }
+        else
+        {
+            ChangeScene("Progreso");
+        }
+        seguroPause.gameObject.SetActive(false);
+        //  Reset values on Scene
+        //  Change Scene
+    }
+    public void PauseConfirmationCancelar()
+    {
+        seguroPause.gameObject.SetActive(false);
     }
 
     public void showMeses() {
@@ -234,6 +277,10 @@ public class GameManager : MonoBehaviour
     {
         fallasTotal = 0;
         fallas = 0;
+        bonus[0] = 0;
+        bonus[1] = 0;
+        bonus[2] = 0;
+        resetCopasUI();
     }
     public void resetTimeMoney()
     {

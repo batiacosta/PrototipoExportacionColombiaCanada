@@ -40,9 +40,6 @@ public class PestanaProps : MonoBehaviour
         }
     }
 
-    public void DefinePestana()
-    {
-        dialogMaganer.GetComponent<DialogManager>().ElegirPestana(idPestana);
-    }
+
 
 }

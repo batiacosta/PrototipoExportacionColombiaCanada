@@ -38,17 +38,15 @@ public class EnvioManager : MonoBehaviour
         ResetGoalValues(1);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Proceso de Envío", new string[] { 
-            "El proceso de envío de la gulupa es por vía aérea, este envío debe de contar con una factura donde se encuentren los datos verificables tanto del exportador, como del importador."
-            ,"El exportador requiere los siguientes datos:\n"
-            + "\n1. Solicitud firmada por persona Natural o Jurídica\n"
-            + "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
-            + "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
-            + "4. Nombre de las especies a exportar\n"
-            , "El transporte de la Gulupa hacia Canadá debe de realizarse ÚNICAMENTE por vía aérea",
-            "El proceso del envío de no cumplir los requisitos implicará la pérdida de la mercancía, de modo que perderás dinero y tiempo mientras se realizan nuevamente los trámites y certificados que correspondan"
-        },
-            new string[] { "titulo1", "titulo2" }
+        dialogPanel.GetComponent<DialogManager>().SetText("Proceso de Envío", new string[] {
+            "El envío de Gulupa se hace ÚNICAMENTE por vía aérea y debe contar con una factura con datos verificables del exportador e importador."
+            ,"Los datos verificables son:\n"
+            + "•	Solicitud firmada por persona Natural o Jurídica.\n"
+            + "•	Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail.\n"
+            + "•	Datos del Representante Legal: Nombre, Datos de contacto.\n"
+            + "•	Nombre de las especies a exportar (Gulupa).\n"
+        }
+           
         );
     }
 
@@ -63,21 +61,28 @@ public class EnvioManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         gameManagerScript.time += 1;
         gameManagerScript.compileFallasTotal();
+
         if (fallas == 0)
         {
             tituloFeedback = titulosFeedback[0];
-            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+            fallasString = "Tuviste 8 aciertos.\n" + "Hiciste un excelente trabajo, claramente identificas los conceptos mostrados.";
         }
         else if (fallas > 0 && fallas < 4)
         {
             tituloFeedback = titulosFeedback[1];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 1 mese, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 8 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 1 mes.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
         else if (fallas >= 4)
         {
             tituloFeedback = titulosFeedback[2];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 1 mese, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 8 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 1 mes.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
+
+       
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         globeSpawner.gameObject.SetActive(false);
@@ -87,23 +92,29 @@ public class EnvioManager : MonoBehaviour
             , "2. Datos de la Empresa: NIT, Razón Social, Dirección, Teléfono y E-mail\n"
             , "3. Datos del Representante Legal: Nombre, Datos de contacto\n"
             , "4. Nombre de las especies a exportar\n"
-            , "\nAcabas de activar un nuevo módulo" },
-            new string[] { "titulo1", "titulo2" }
+            , "\nAcabas de activar un nuevo módulo" }
         );
     }
 
     public void CloseDialog()
     {
-        counterDialog++;
-        dialogPanel.gameObject.SetActive(false);
-        if (counterDialog == 1)
+        if (dialogPanel.GetComponent<DialogManager>().acabo == true)
         {
-            PrimeraInstruccion();
+            counterDialog++;
+            dialogPanel.gameObject.SetActive(false);
+            if (counterDialog == 1)
+            {
+                PrimeraInstruccion();
+            }
+            else if (counterDialog == 2)
+            {
+                gameManagerScript.enabledLevels = 7;
+                gameManagerScript.ChangeScene("Progreso");
+            }
         }
-        if (counterDialog == 2)
+        else
         {
-            gameManagerScript.enabledLevels = 7;
-            gameManagerScript.ChangeScene("Progreso");
+            dialogPanel.GetComponent<DialogManager>().Siguiente();
         }
     }
 
@@ -141,7 +152,7 @@ public class EnvioManager : MonoBehaviour
             if (isBubble)
             {
                 instrucciones.gameObject.SetActive(true);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Vamos por el siguiente reto!");
             }
             else
             {

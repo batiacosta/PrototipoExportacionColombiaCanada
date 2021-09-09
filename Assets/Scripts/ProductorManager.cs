@@ -39,23 +39,21 @@ public class ProductorManager : MonoBehaviour
         ResetGoalValues(8);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Requisitos Productor", new string[] {"El productor debe cumplir con unos requerimientos que son Requisitos Documentales y Requisitos de Infraestructura que garantizan y certifican inocuidad, buenas prácticas agrícolas y manejo de residuos entre otros.\n"
-            , "En este módulo se mencionan algunos de esos requisitos que irán clasificados en Documentales y de Infraestructura\n"
-            ,"El productor debe cumplir en su Infraestructura con:\n"
-            + "\nArea de Registros, " + "Señalización, "
-            + "Área de insumos agrícolas, " + "Almacén de herramientas, "
-            + "Área acopioCosecha\n"
-            + "Plano \n"
-            + "Kit Primeros Auxilios. \n\n"
-            , "El productor debe cumplir en su Documentación con:\n"
-            + "\nSolicitud firmada Persona Natural o Jurídica, \n"
-            + "Nombre y contacto Representante Legal\n "
-            + "Datos del Predio y su ubicación\n "
-            + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional\n "
-            + "Nombre de especies cultivadas\n"
-            + "Datos Empresa."
-            , "\nLos procesos de certificación tienen una duración, cada vez que falles en la prueba, el tiempo aumenta dado que en el proceso real, la certificación se retrasa y eso se ve reflejado en un aumento del costo y tiempo invertido." },
-            new string[] { "titulo1", "titulo2" }
+        dialogPanel.GetComponent<DialogManager>().SetText("Productor", new string[] {"El productor garantiza inocuidad y buenas prácticas agrícolas cumpliendo con requisitos Documentales y de Infraestructura.\n"
+            ,"Requerimientos de Infraestructura: \n"
+            + "•	Area de Registros\n"
+            + "•	Señalización, plano y kit primeros	   auxilios\n"
+            + "•	Área de insumos agrícolas\n"
+            + "•	Almacén de herramientas\n"
+            + "•	Área acopioCosecha\n"
+            , "Requerimientos Documentales\n"
+            + "•	Solicitud firmada Persona Natural o Jurídica\n"
+            + "•	Nombre y contacto Representante Legal\n "
+            + "•	Datos del Predio y su ubicación\n"
+            + "•	Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional\n"
+            + "•	Nombre de especies cultivadas (Gulupa)\n"
+            + "•	Datos Empresa."
+        }
         );
     }
 
@@ -73,50 +71,49 @@ public class ProductorManager : MonoBehaviour
         if (fallas == 0)
         {
             tituloFeedback = titulosFeedback[0];
-            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+            fallasString = "Tuviste 17 aciertos.\n" + "Hiciste un excelente trabajo, claramente identificas los conceptos mostrados.";
         }
         else if (fallas > 0 && fallas < 4)
         {
             tituloFeedback = titulosFeedback[1];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 17 aciertos.\n"+"Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
         else if (fallas >= 4)
         {
             tituloFeedback = titulosFeedback[2];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 17 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
+       
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString, "El productor debe cumplir en su Infraestructura con:\n"
-            + "\nArea de Registros, " + "Señalización, "
-            + "Área de insumos agrícolas, " + "Almacén de herramientas, "
-            + "Área acopioCosecha, "+ "Plano, "
-            + "Kit Primeros Auxilios. \n\n"
-            , "El productor debe cumplir en su Documentación con:\n"
-            + "\nSolicitud firmada Persona Natural o Jurídica, \n"
-            + "Nombre y contacto Representante Legal, "
-            + "Datos del Predio y su ubicación, "
-            + "Contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
-            + "Nombre de especies cultivadas, "
-            + "Datos Empresa.\n\n"
-            , "\n¡Acabas de activar un nuevo Módulo!" },
-            new string[] { "titulo1", "titulo2"}
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString }
         );
     }
 
     public void CloseDialog()
     {
-        counterDialog++;
-        dialogPanel.gameObject.SetActive(false);
-        if (counterDialog == 1)
+        if (dialogPanel.GetComponent<DialogManager>().acabo == true)
         {
-            PrimeraInstruccion();
+            counterDialog++;
+            dialogPanel.gameObject.SetActive(false);
+            if (counterDialog == 1)
+            {
+                PrimeraInstruccion();
+            }
+            else if (counterDialog == 2)
+            {
+                gameManagerScript.ChangeScene("Progreso");
+            }
         }
-        if (counterDialog == 2)
+        else
         {
-            gameManagerScript.ChangeScene("Progreso");
+            dialogPanel.GetComponent<DialogManager>().Siguiente();
         }
     }
 
@@ -159,14 +156,14 @@ public class ProductorManager : MonoBehaviour
             {
                 instrucciones.gameObject.SetActive(true);
                 bubbleSpawner.gameObject.SetActive(false);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Vamos por el siguiente reto!");
                 gameManagerScript.enabledLevels = 4;
                
             }
             else
             {
                 instrucciones.gameObject.SetActive(true);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Vamos por el siguiente reto!");
                 /*gameManagerScript.enabledLevels = 3;
                 SegundoDialogo();*/
             }
@@ -194,11 +191,7 @@ public class ProductorManager : MonoBehaviour
     {
         isBubble = false;
         instrucciones.gameObject.SetActive(true);
-        instrucciones.GetComponent<Instructions>().SetTexto("¿Qué requisitos documentales debe cunmplir el productor?:\n" 
-            + "\nSolicitudes, datos de la empresa, "
-            + "datos del predio, "
-            + "contrato certificado de Ingeniero Agrónomo y su tarjeta profesional, "
-            + "nombre de especies cultivadas.\n"
+        instrucciones.GetComponent<Instructions>().SetTexto("¿Qué requisitos documentales debe cumplir el productor?:\n" 
             + "\nArrastra los globos según corresponda Falso o Verdadero.");
     }
     void segundaInstruccion()
@@ -206,9 +199,7 @@ public class ProductorManager : MonoBehaviour
         ResetGoalValues(5);
         instrucciones.gameObject.SetActive(true);
         instrucciones.GetComponent<Instructions>().SetTexto("¿Qué requerimientos en infraestructura debe cumplir el productor?\n"
-           + "Áreas y señalizaciones, planos y Kit de primeros auxilios."
-            + "\n"
-            + "\nEscoge las burbujas corrrectas.");
+            + "\nEscoge las burbujas correctas.");
     }
 
     // Update is called once per frame

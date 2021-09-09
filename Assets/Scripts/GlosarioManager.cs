@@ -17,6 +17,7 @@ public class GlosarioManager : MonoBehaviour
     public GameObject dialogPanel2;
     public GameObject malPanel;
     public GameObject primerPanel;
+    public GameObject segundoPanel;
     public GameObject copaPanel;
 
     public int currentTerm = 0; // De 0 a 3 imagenes con los glosarios
@@ -33,9 +34,19 @@ public class GlosarioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //  Abrir Panel para escoger entre Glosario y Omitir
+        PrimeraPantalla();
+        
+    }
+    public void PrimeraPantalla()
+    {
+        ocultarPanelPrimero();
         primerPanel.gameObject.SetActive(true);
         GameObject.Find("GameManager").GetComponent<GameManager>().hideMeses();
+    }
+    public void SegundaPantalla()
+    {
+        primerPanel.gameObject.SetActive(false);
+        segundoPanel.gameObject.SetActive(true);
     }
     public void EmpezarGlosario() {
         ocultarPanelPrimero();
@@ -187,6 +198,12 @@ public class GlosarioManager : MonoBehaviour
     {
         copaPanel.gameObject.SetActive(false);
     }
+    public void BackToMenu()
+    {
+        resetValues();
+        hidePanels();
+        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Login");
+    }
     void agregarCopa() {
         switch (currentTerm) {
             case 0:
@@ -229,15 +246,19 @@ public class GlosarioManager : MonoBehaviour
         }
         mostrarContenido();
     }
-    void resetValues() {
+    public void resetValues() {
         currentChallenge = 0;
         currentTerm = 0;
+        GameObject.Find("GameManager").GetComponent<GameManager>().bonus[0] = 0;
+        GameObject.Find("GameManager").GetComponent<GameManager>().bonus[1] = 0;
+        GameObject.Find("GameManager").GetComponent<GameManager>().bonus[2] = 0;
+        GameObject.Find("GameManager").GetComponent<GameManager>().resetCopasUI();
     }
     void hidePanels() {
         glossaryGamePanel.gameObject.SetActive(false);
         glossaryPanel.gameObject.SetActive(false);
     }
     void ocultarPanelPrimero() {
-        primerPanel.gameObject.SetActive(false);
+        segundoPanel.gameObject.SetActive(false);
     }
 }

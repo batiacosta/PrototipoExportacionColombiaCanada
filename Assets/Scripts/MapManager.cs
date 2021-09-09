@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MapManager : MonoBehaviour
 {
     public Sprite[] status;
     public GameObject[] stages;
+    public GameObject dialogPanelMap;
     public GameObject dialogPanel;
     public GameObject instructions;
     public GameObject playerDialog;
@@ -23,14 +23,13 @@ public class MapManager : MonoBehaviour
         playerDialog.gameObject.SetActive(false);
         gameManager = GameObject.Find("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
-        gameManagerScript.showMeses();
         if (gameManagerScript.isFirstTime)
         {
             gameManagerScript.UpdateMoneyValue(30000000);
             gameManagerScript.UpdateTimeValue(0);
             gameManagerScript.isFirstTime = false;
         }
-        gameManagerScript.SetHiddenLevel(3);
+        
         progress = gameManagerScript.enabledLevels;
         if(progress == 2)
         {
@@ -41,9 +40,7 @@ public class MapManager : MonoBehaviour
     public void ChangeScene()
     {
         string sceneName;
-        Debug.Log(currentStage);
         playerDialog.gameObject.SetActive(false);
-        //gameManagerScript.hideMeses();
         if (currentStage == 2)
         {
             
@@ -78,37 +75,38 @@ public class MapManager : MonoBehaviour
         if (currentStage == 2)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Exportador",
-                new string [] { "El exportador debe de cumplir con una serie de certificaciones ante el Instituto Colombiano Agropecuario (ICA) que le permiten unas garantías legales para exportar. Las fallas en el proceso de certificación puede generar retrasos de hasta un año, sin contar con las pérdidas que implican no vender su producto en el exterior." },
-            new string[] { "Descripción" }
+            playerDialog.GetComponent<DialogMapManagerCups>().SetText("Exportador",
+                new string [] { "El exportador cumple con una serie de requisitos ante el ICA que le dan garantías legales para exportar la Gulupa." },
+                2, gameManagerScript.bonus[0]
+            
         );
         }else if (currentStage == 3)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Productor", new string[] {"El exportador debe de seleccionar a un productor certificado que le provea de la gulupa que ofrecerá al Canadá. Este nivel presenta los requisitos mínimos con los que debe contar el productor para ser escogido por el exportador."
-                ,"Inocuidad: La inocuidad de los alimentos puede definirse como el conjunto de condiciones y medidas necesarias durante la producción, almacenamiento, distribución y preparación de alimentos para asegurar que una vez ingeridos, no representen un riesgo para la salud." },
-            new string[] { "Descripción", "Glosario" }
+            playerDialog.GetComponent<DialogMapManagerCups>().SetText("Productor", new string[] { "El productor debe de contar con certificado ICA para ser escogido por el exportador." },
+                6, gameManagerScript.bonus[2]
+
         );
         }
         else if (currentStage == 4)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Importador", new string[] { "El exportador debe de contactar con una empresa importadora canadiense que compre su producto. En este nivel se ven las características que debe de tener este importador." },
-            new string[] { "Descripción"}
+            playerDialog.GetComponent<DialogMapManagerCups>().SetText("Importador", new string[] { "Es el empresario canadiense que compra la gulupa al exportador colombiano." },
+            1, 0
         );
         }
         else if (currentStage == 5)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "Una presentación comercial que no permita realizar una trazabilidad del producto puede ser rechazada para su distribución en Canadá, lo que implica la pérdida del cargamento. Este nivel muestra los elementos con los que debe de contar la presentación comercial de la Gulupa." },
-            new string[] { "Descripción" }
+            playerDialog.GetComponent<DialogMapManagerCups>().SetText("Presentación Comercial", new string[] { "La presentación comercial que no permita una trazabilidad, es rechazada en Canadá." },
+            1, gameManagerScript.bonus[1]
         );
         }
         else if (currentStage == 6)
         {
             playerDialog.gameObject.SetActive(true);
-            playerDialog.GetComponent<DialogManager>().SetText("Envío", new string[] { "La gulupa al ser un producto fresco, requiere de unas condiciones para ser transportada. Descuidar las condiciones de envío puede verse reflejado en la pérdida del cargamento, o sobrecostos." },
-            new string[] { "Descripción" }
+            playerDialog.GetComponent<DialogMapManagerCups>().SetText("Envío", new string[] { "La Gulupa requiere unas condiciones de transporte por ser un producto fresco." },
+            1, 0
         );
         }
         else if (currentStage == 7)
@@ -124,7 +122,10 @@ public class MapManager : MonoBehaviour
     public void CloseDialog()
     {
         isReadyForALevel++;
+        gameManagerScript.showMeses();
         dialogPanel.gameObject.SetActive(false);
+        dialogPanelMap.gameObject.SetActive(false);
+        gameManagerScript.SetHiddenLevel(3);
         if (isReadyForALevel > 0)
         {
             if(currentStage == 2)
@@ -140,23 +141,20 @@ public class MapManager : MonoBehaviour
     private void PrimeraVez()
     {
         dialogPanel.gameObject.SetActive(true);
+        gameManagerScript.showMeses();
+        //gameManagerScript.Set
         GetDialogScript();
-        dialogoScript.HiceDancelar();
-        dialogoScript.SetText("Requerimientos Fitosanitarios \npara exportación de Gulupa desde \nColombia a Canadá",
+        dialogPanel.GetComponent<DialogManager>().SetText("La ruta exportadora de la Gulupa a Canadá",
 
             new string[] {
-           "El proceso de exportación de la Gulupa debe superar varios desafíos, entre ellos, las barreras no arancelarias como las fitosanitarias. En este juego, encuentras elementos para identificar los conceptos relacionados a la certificación fitosanitaria, producción, envío y embalaje."
-           ,"Fito: Significa: “Planta” o “vegetal”, Definición de La Real Academia Española.\n\n"
-           + "Fitosanitario: Es la prevención, y curación de las plantas.\n\n"
-           + "Certificado Fitosanitario: Documento oficial que certifica que se cumple con los requerimientos técnicos que debe cumplir el exportador solicitante a la entidad sanitari, avalando el proceso productivo del cultivo, para este caso la Gulupa."
-           },
-            new string[] { "Descripción", "Glosario" }
+           "La duración total del proceso en la exportación de la Gulupa está estimada en 16 meses. La barra verde es la referencia del tiempo, si excedes ese tiempo, significa que el proceso de exportación presentó retrasos."
+           }
         );
     }
 
     private void GetDialogScript()
     {
-        dialogoScript = dialogPanel.GetComponent<DialogManager>();
+        dialogoScript = dialogPanelMap.GetComponent<DialogManager>();
     }
 
     void UpdateProgressStatus(int newStatus)

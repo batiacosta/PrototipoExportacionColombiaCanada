@@ -38,8 +38,16 @@ public class PresentacionComercialManager : MonoBehaviour
         ResetGoalValues(6);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "La gulupa debe de estar en una caja de cartón y en bolsa plástica, que debe contener los datos que permitan hacer la trazabilidad. Los datos son la fecha de producción, lote, fecha de caducidad, número del establecimiento, el peso del producto, el código del predio y el Registro de la planta empacadora certificada por el ICA" },
-            new string[] { "titulo1", "titulo2" }
+        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "El empaque de la Gulupa es una caja de cartón de con bolsa plástica. Dicho empaque contiene datos que permiten dar trazabilidad al producto."
+            , "Datos del empaque:\n\n"
+            + "•	Fecha de producción.\n"
+            + "•	Lote.\n"
+            + "•	Fecha de caducidad.\n"
+            + "•	Número del establecimiento.\n"
+            + "•	Peso del producto.\n"
+            + "•	Código del predio.\n"
+            + "•	Registro certificado ICA de planta empacadora."
+        }
         );
     }
 
@@ -54,33 +62,32 @@ public class PresentacionComercialManager : MonoBehaviour
         gameManagerScript.SetHiddenLevel(0);
         gameManagerScript.time += 6;
         gameManagerScript.compileFallasTotal();
+
         if (fallas == 0)
         {
             tituloFeedback = titulosFeedback[0];
-            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+            fallasString = "Tuviste 8 aciertos.\n" + "Hiciste un excelente trabajo, claramente identificas los conceptos mostrados.";
         }
         else if (fallas > 0 && fallas < 4)
         {
             tituloFeedback = titulosFeedback[1];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 8 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
         else if (fallas >= 4)
         {
             tituloFeedback = titulosFeedback[2];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 8 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 6 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
+
+       
         dialogPanel.gameObject.SetActive(true);
         bubbleSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString, "La presentación comercial cuenta con:\n"
-            + "\n1. Peso en Kg\n"
-            + "2. Fecha de producción\n"
-            + "3. Número del establecimiento\n"
-            + "4. Fecha de Caducidad\n"
-            + "5. Código del predio\n"
-            + "6. Registro Empacadora"
-            , "\nAcabas de activar un nuevo módulo" },
-            new string[] { "titulo1", "titulo2" }
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] {fallasString }
         );
     }
 
@@ -91,16 +98,23 @@ public class PresentacionComercialManager : MonoBehaviour
 
     public void CloseDialog()
     {
-        counterDialog++;
-        dialogPanel.gameObject.SetActive(false);
-        if (counterDialog == 1)
+        if (dialogPanel.GetComponent<DialogManager>().acabo == true)
         {
-            PrimeraInstruccion();
+            counterDialog++;
+            dialogPanel.gameObject.SetActive(false);
+            if (counterDialog == 1)
+            {
+                PrimeraInstruccion();
+            }
+            else if (counterDialog == 2)
+            {
+                gameManagerScript.enabledLevels = 6;
+                gameManagerScript.ChangeScene("Progreso");
+            }
         }
-        if (counterDialog == 2)
+        else
         {
-            gameManagerScript.enabledLevels = 6;
-            gameManagerScript.ChangeScene("Progreso");
+            dialogPanel.GetComponent<DialogManager>().Siguiente();
         }
     }
 
@@ -156,7 +170,7 @@ public class PresentacionComercialManager : MonoBehaviour
         if (isBubble)
         {
             malDialog.gameObject.SetActive(true);
-            malDialog.GetComponent<MalDialogManager>().SetTextContent("El color y el tamaño son irrelevantes, siempre y cuando se tenga la trazabilidad del producto");
+            malDialog.GetComponent<MalDialogManager>().SetTextContent("El color de la caja es irrelevante, siempre y cuando se tenga la trazabilidad del producto");
         }
         else
         {
@@ -174,7 +188,6 @@ public class PresentacionComercialManager : MonoBehaviour
             + "4. Fecha de Caducidad\n"
             + "5. Código del predio\n"
             + "6. Registro Empacadora\n"
-
             + "\nEscoge las burbujas corrrectas.");
     }
     void segundaInstruccion()

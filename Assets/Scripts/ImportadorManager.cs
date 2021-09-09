@@ -34,11 +34,10 @@ public class ImportadorManager : MonoBehaviour
     {
         gameManagerScript.SetHiddenLevel(0);
 
-        ResetGoalValues(2);
+        ResetGoalValues(3);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Módulo de importador", new string[] { "El comerciante exportador debe de buscar un cliente Importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" },
-            new string[] { "titulo1", "titulo2" }
+        dialogPanel.GetComponent<DialogManager>().SetText("Módulo de importador", new string[] { "El exportador escoge un Importador Canadiense que cuenta con un Business Number que lo identifica y consta de 9 dígitos" }
         );
     }
 
@@ -56,38 +55,49 @@ public class ImportadorManager : MonoBehaviour
         if (fallas == 0)
         {
             tituloFeedback = titulosFeedback[0];
-            fallasString = "Hiciste un excelente trabajo, claramente identificas los siguientes conceptos... ";
+            fallasString = "Tuviste 3 aciertos.\n" + "Hiciste un excelente trabajo, claramente identificas los conceptos mostrados.";
         }
         else if (fallas > 0 && fallas < 4)
         {
             tituloFeedback = titulosFeedback[1];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 0.5 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 3 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 0.5 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
         else if (fallas >= 4)
         {
             tituloFeedback = titulosFeedback[2];
-            fallasString = "Tuviste " + fallas.ToString() + " errores, esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 0.5 meses, y una pérdida de $" + (fallas * 5000000).ToString();
+            fallasString = "Tuviste 3 aciertos.\n" + "Tuviste " + fallas.ToString() + " errores\n\n"
+                + "Esto implica un retraso de " + fallas.ToString() + " meses en un proceso que dura 0.5 meses.\n\n"
+                + "El sobrecosto adquirido es: $" + (fallas * 5000000).ToString();
         }
+        
         dialogPanel.gameObject.SetActive(true);
         globeSpawner.gameObject.SetActive(false);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] { fallasString, "El comerciante exportador debe de buscar un cliente importador canadiense que tenga un número que identifique su empresa, dicho número es denominado \n'Business Number' y consta de 9 dígitos" },
-            new string[] { "titulo1", "titulo2" }
+        dialogPanel.GetComponent<DialogManager>().SetText(tituloFeedback, new string[] { fallasString }
         );
     }
 
     public void CloseDialog()
     {
-        counterDialog++;
-        dialogPanel.gameObject.SetActive(false);
-        if (counterDialog == 1)
+        if(dialogPanel.GetComponent<DialogManager>().acabo == true)
         {
-            PrimeraInstruccion();
+            counterDialog++;
+            dialogPanel.gameObject.SetActive(false);
+            if (counterDialog == 1)
+            {
+                PrimeraInstruccion();
+            }
+            else if (counterDialog == 2)
+            {
+                gameManagerScript.enabledLevels = 5;
+                gameManagerScript.ChangeScene("Progreso");
+            }
         }
-        if (counterDialog == 2)
+        else
         {
-            gameManagerScript.enabledLevels = 5;
-            gameManagerScript.ChangeScene("Progreso");
+            dialogPanel.GetComponent<DialogManager>().Siguiente();
         }
     }
 
@@ -127,7 +137,7 @@ public class ImportadorManager : MonoBehaviour
             if (isBubble)
             {
                 instrucciones.gameObject.SetActive(true);
-                instrucciones.GetComponent<Instructions>().SetTexto("¡Felicidades, ahora vamos por el siguiente reto!");
+                instrucciones.GetComponent<Instructions>().SetTexto("¡Vamos por el siguiente reto!");
                 gameManagerScript.enabledLevels = 4;
                 //SegundoDialogo();
 

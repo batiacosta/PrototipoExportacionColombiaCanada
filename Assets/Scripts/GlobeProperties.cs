@@ -42,7 +42,7 @@ public class GlobeProperties : MonoBehaviour
             }
             Move();
         }
-        if(transform.position.x >5 || transform.position.x < -5)
+        if(transform.position.x >9.22f || transform.position.x < -5.8)
         {
             transform.position = new Vector2(0, transform.position.y);
         }

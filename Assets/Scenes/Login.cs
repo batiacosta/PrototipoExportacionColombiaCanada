@@ -34,8 +34,8 @@ public class Login : MonoBehaviour
     }
     public void GotoTutorialScene()
     {
-        //GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("MainMenu");
-        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Progreso");
+        GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("MainMenu");
+        //GameObject.Find("GameManager").GetComponent<GameManager>().ChangeScene("Progreso");
     }
 
     public void openAcercade()
