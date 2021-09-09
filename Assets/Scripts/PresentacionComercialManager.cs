@@ -38,7 +38,7 @@ public class PresentacionComercialManager : MonoBehaviour
         ResetGoalValues(6);
         dialogPanel.gameObject.SetActive(true);
         dialogPanel.GetComponent<DialogManager>().HiceDancelar();
-        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "El empaque de la Gulupa es una caja de cartón de con bolsa plástica. Dicho empaque contiene datos que permiten dar trazabilidad al producto."
+        dialogPanel.GetComponent<DialogManager>().SetText("Presentación Comercial", new string[] { "El empaque de la Gulupa es una caja de cartón con bolsa plástica. Dicho empaque contiene datos que permiten dar trazabilidad al producto."
             , "Datos del empaque:\n\n"
             + "•	Fecha de producción.\n"
             + "•	Lote.\n"
